@@ -229,7 +229,7 @@ Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosp
 \end{figure}
 
 \subsection{Performance: CAM and WACCM}
-[check with John]
+[check with John] [remember pcols setting for pecount 5400]
 % \section{Materials and Methods}
 % Here is text on Materials and Methods.
 %
@@ -241,9 +241,24 @@ Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosp
 % \section{Results} (Or section title might be a descriptive heading about the
 % results)
 %
+
 \section{Conclusions}
 
-
+\section{Things to do before release [not included in final manuscript!]}
+\subsection{Initial condition files}
+\begin{itemize}
+\item \verb+ne30pg4+ WACCM initial condition (with and without chemistry)
+\item CAM initial condition from John's runs
+\item CONUS WACCM initial condition (with chemistry)
+\end{itemize}
+\subsection{\veb+physconst.F90+}
+\begin{itemize}
+\item species dependent code
+\end{itemize}
+\subsection{clean-up}
+\begin{itemize}
+\item remove namelist options that are not tested: variable_nsplit, ...
+\end{itemize}
 \section{= enter section title =}
 %Text here ===>>>
 
