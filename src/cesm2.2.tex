@@ -212,9 +212,23 @@ Held-Suarez topo
 \item 
 \end{itemize}
 \section{Results}
+\subsection{CAM}
+[what CAM results should we show]
 \subsection{Support for CONUS and Arctic variable resolution grids}
 \subsection{WACCM QBO}
-\subsection{Performace: CAM and WACCM}
+Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosphere. The QBO is very difficult to represent in GCMs, for example, only 3 out of 27 CMIP5 models had an internally generated QBO. Necessary processes to simulate accurately for a successful simulation of the QBO is resolved Kelvin and mixed-Rossby gravity waves and small-scale gravity waves (which are parameterized in WACCM: Beres et al. 2002, Richter et al. 2010). To achieve this adequate vertical resolution is necessary. The finite-volume dynamical core with 110 vertical levels has successfully simulated the QBO [ref].
+
+\begin{itemize}
+\item show that vertical remapping method matters for 70 layer model
+\item tuning needed \verb+effgw_beres+
+\end{itemize}
+\begin{figure}
+\noindent\includegraphics[width=\textwidth]{figs/FWscHIST-nlev70.pdf}
+\noindent\includegraphics[width=\textwidth]{figs/FWscHIST-nlev110.pdf}
+\caption{[warning: these figures are not final] Tropical zonal winds ($2^\circ S$ to $2^\circ N$ average) simulated in historical simulation using approximately 1 degree SE-CSLAM with (upper plot) 70 and (lower plot) 110  levels in the vertical, respectively.}
+\end{figure}
+
+\subsection{Performance: CAM and WACCM}
 [check with John]
 % \section{Materials and Methods}
 % Here is text on Materials and Methods.
