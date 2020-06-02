@@ -229,6 +229,21 @@ Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosp
 
 \subsection{Performance: CAM and WACCM}
 [check with John] [remember pcols setting for pecount 5400]
+
+\begin{itemize}
+\item verb+FWsc2000+ (41 tracers): SYPD = 4.825 (ne30) and SYPD = 5.763 (ne30pg3); 1 month test with interpolated monthly output.=> 19% faster
+\item verb+FW2000+ (201 tracers): SYPD =  1.171 (ne30) and SYPD = 1.655 (ne30pg3); 5 day run => 40% faster
+\begin{verbatim}
+                         ne30      ne30pg3
+prim_advec_tracers_fvm             358.263
+prim_advec_tracers_remap 682.674   19.256
+vertical_remap            37.047   43.460
+dp_couling                16       16.7
+p_d_coupling              23       29
+\end{verbatim}
+
+
+\end{itemize}
 % \section{Materials and Methods}
 % Here is text on Materials and Methods.
 %
