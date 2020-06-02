@@ -1,1 +1,6 @@
 FWscHIST.sh	: script used for QBO simulations
+
+Performance testing script:
+
+performance.sh
+performance_master.sh
