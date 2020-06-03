@@ -1,0 +1,10 @@
+#
+# to run performance runs
+#
+1. set compset in performance_master.sh
+2. execute source performance_master.sh
+#
+# thereafter to extract performance data
+#
+1. set compset in performance_extract.sh
+2. execute source performance_extract.sh

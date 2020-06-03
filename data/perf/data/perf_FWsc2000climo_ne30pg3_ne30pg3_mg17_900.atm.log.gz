@@ -1,0 +1,3231 @@
+ CAM atmosphere model initialization
+  
+ Initialize PIO subsystem:
+   iotype  =            5
+  
+  ------------------------------------------
+  *********** CAM LOG OUTPUT ***************
+  ------------------------------------------
+          Initial run
+  ********** CASE = perf_FWsc2000climo_ne30pg3_ne30pg3_mg17_900 **********
+ UNSET                                                                                                                                                                                                                                                           
+  ********** Time Manager Configuration **********
+   Calendar type:            NO_LEAP
+   Timestep size (seconds):          1800
+   Start date (yr mon day tod):                1           1           1
+           0
+   Stop date (yr mon day tod):                 1           2           1
+           0
+   Reference date (yr mon day tod):            1           1           1
+           0
+   Current step number:                 0
+   Current date (yr mon day tod):              1           1           1
+           0
+  ************************************************
+ SPMD SWAP_COMM OPTIONS: 
+   swap_comm_protocol =            4
+   swap_comm_maxreq   =          128
+ SPMD FLOW CONTROL GATHER OPTION: 
+   fc_gather_flow_cntl =           64
+ PHYS_GRID options:
+   Using PCOLS         =          16
+   phys_loadbalance    =           2
+   phys_twin_algorithm =           0
+   phys_alltoall       =          -1
+   chunks_per_thread   =           1
+ cam_initfiles_readnl options:
+   Initial run will start from: 
+ /glade/p/cgd/amp/pel/inic/FWsc2000.ne30pg3_ne30pg3_nlev70.i.nc
+   Topography dataset is: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/topo/se/ne30pg3_nc3000_Co060_Fi001_PF_
+ nullRR_Nsw042_20171014.nc
+   Maximum abs value of scale factor used to perturb initial conditions, pertlim
+ =   0.000000000000000E+000
+ Summary of constituent module options:
+   Read constituent initial values from initial file by default:  T
+ Read in cam_history_nl namelist from: atm_in
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            1  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            2  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            3  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            4  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            5  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            6  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            7  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            8  will have averaging flag A
+ Unless overridden by namelist input on a per-field basis (FINCL),
+ All fields on history file            9  will have averaging flag I
+ Initial conditions history files will be written yearly.
+  
+ chem_surfvals_readnl: Settings for control of GHG surface values 
+   scenario_ghg = CHEM_LBC_FILE
+   GHG values time interpolated from LBC file:
+     flbc_file = 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_2000climo_CMIP6_0p5degLat_c18
+ 0227.nc
+     flbc_type = CYCLICAL
+     flbc_cycle_yr =         2000
+   Species from LBC file:
+     CO2
+     CH4
+     N2O
+     CFC11
+     CFC12
+     CFC11eq
+  
+ Dry adiabatic adjustment applied to top N layers; N=           3
+ Dry adiabatic adjustment number of iterations for convergence =          15
+ MG microphysics namelist:
+   micro_mg_version            =            2
+   micro_mg_sub_version        =            0
+   micro_mg_do_cldice          =  T
+   micro_mg_do_cldliq          =  T
+   micro_mg_num_steps          =            1
+   microp_uniform              =  F
+   micro_mg_dcs                =   5.000000000000000E-004
+   micro_mg_berg_eff_factor    =    1.00000000000000     
+   micro_mg_precip_frac_method = in_cloud        
+   micro_do_sb_physics         =  F
+   micro_mg_adjust_cpt         =  F
+   micro_mg_nccons             =  F
+   micro_mg_nicons             =  F
+   micro_mg_ncnst              =    100000000.000000     
+   micro_mg_ninst              =    100000.000000000     
+   micro_mg_ngcons             =  F
+   micro_mg_ngnst              =    100000.000000000     
+   micro_mg_do_hail            =  F
+   micro_mg_do_graupel         =  F
+   micro_do_massless_droplet_destroyer =  F
+ cld_sediment_readnl: cldsed_ice_stokes_fac =   1.797693134862316E+308
+ lunar_tides_readnl: apply_lunar_tides:  F
+ iondrag options:
+   efield_lflux_file = coeff_lflux.dat
+   efield_hflux_file = coeff_hflux.dat
+   efield_potential_max =   1.797693134862316E+308
+   empirical_ion_velocities =  T
+ RRTMG radiation scheme parameters:
+  Frequency (timesteps) of Shortwave Radiation calc:      2
+  Frequency (timesteps) of Longwave Radiation calc:       2
+  SW/LW calc done every timestep for first N steps. N=    0
+  Use average zenith angle:                               F
+  Output spectrally resolved fluxes:                      F
+  Graupel in Radiation Code:                              F
+
+ 
+rad_cnst_readnl: Radiation constituent lists:
+ 
+ list_init1: namelist input for climate list
+   rad namelist spec: A:Q:H2O
+   rad namelist spec: N:O2:O2
+   rad namelist spec: N:CO2:CO2
+   rad namelist spec: N:ozone:O3
+   rad namelist spec: A:N2O:N2O
+   rad namelist spec: A:CH4:CH4
+   rad namelist spec: N:CFC11STAR:CFC11
+   rad namelist spec: A:CFC12:CFC12
+   rad namelist spec: M:mam4_mode1:/glade/p/cesmdata/cseg/inputdata/atm/cam/phys
+ props/mam4_mode1_rrtmg_aeronetdust_sig1.6_dgnh.48_c140304.nc
+   rad namelist spec: M:mam4_mode2:/glade/p/cesmdata/cseg/inputdata/atm/cam/phys
+ props/mam4_mode2_rrtmg_aitkendust_c141106.nc
+   rad namelist spec: M:mam4_mode3:/glade/p/cesmdata/cseg/inputdata/atm/cam/phys
+ props/mam4_mode3_rrtmg_aeronetdust_sig1.2_dgnl.40_c150219.nc
+   rad namelist spec: M:mam4_mode4:/glade/p/cesmdata/cseg/inputdata/atm/cam/phys
+ props/mam4_mode4_rrtmg_c130628.nc
+   rad namelist spec: N:VOLC_MMR1:/glade/p/cesmdata/cseg/inputdata/atm/cam/physp
+ rops/volc_camRRTMG_byradius_sigma1.6_mode1_c170214.nc
+   rad namelist spec: N:VOLC_MMR2:/glade/p/cesmdata/cseg/inputdata/atm/cam/physp
+ rops/volc_camRRTMG_byradius_sigma1.6_mode2_c170214.nc
+   rad namelist spec: N:VOLC_MMR3:/glade/p/cesmdata/cseg/inputdata/atm/cam/physp
+ rops/volc_camRRTMG_byradius_sigma1.2_mode3_c170214.nc
+ 
+ gas list for climate calculations
+   A:H2O   has constituents name:Q
+   N:O3    has pbuf name:ozone
+   N:O2    has pbuf name:O2
+   N:CO2   has pbuf name:CO2
+   A:N2O   has constituents name:N2O
+   A:CH4   has constituents name:CH4
+   N:CFC11 has pbuf name:CFC11STAR
+   A:CFC12 has constituents name:CFC12
+ 
+ bulk aerosol list for climate calculations
+   N:VOLC_MMR1 optics and phys props in :/glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/physprops/volc_camRRTMG_byradius_sigma1.6_mode1_c170214.nc
+   N:VOLC_MMR2 optics and phys props in :/glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/physprops/volc_camRRTMG_byradius_sigma1.6_mode2_c170214.nc
+   N:VOLC_MMR3 optics and phys props in :/glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/physprops/volc_camRRTMG_byradius_sigma1.2_mode3_c170214.nc
+ 
+ modal aerosol list for climate calculations
+   mam4_mode1
+   mam4_mode2
+   mam4_mode3
+   mam4_mode4
+  Mode Definitions
+ 
+ name=mam4_mode1  type=accum
+  src_a=A  num_a=num_a1 src_c=N  num_c=num_c1
+  src_a=A  mmr_a=so4_a1  src_c=N  mmr_c=so4_c1  type=sulfate
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+  src_a=A  mmr_a=pom_a1  src_c=N  mmr_c=pom_c1  type=p-organic
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc
+  src_a=A  mmr_a=soa_a1  src_c=N  mmr_c=soa_c1  type=s-organic
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+  src_a=A  mmr_a=bc_a1  src_c=N  mmr_c=bc_c1  type=black-c
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc
+  src_a=A  mmr_a=dst_a1  src_c=N  mmr_c=dst_c1  type=dust
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.n
+ c
+  src_a=A  mmr_a=ncl_a1  src_c=N  mmr_c=ncl_c1  type=seasalt
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+ 
+ name=mam4_mode2  type=aitken
+  src_a=A  num_a=num_a2 src_c=N  num_c=num_c2
+  src_a=A  mmr_a=so4_a2  src_c=N  mmr_c=so4_c2  type=sulfate
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+  src_a=A  mmr_a=soa_a2  src_c=N  mmr_c=soa_c2  type=s-organic
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+  src_a=A  mmr_a=ncl_a2  src_c=N  mmr_c=ncl_c2  type=seasalt
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+  src_a=A  mmr_a=dst_a2  src_c=N  mmr_c=dst_c2  type=dust
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.n
+ c
+ 
+ name=mam4_mode3  type=coarse
+  src_a=A  num_a=num_a3 src_c=N  num_c=num_c3
+  src_a=A  mmr_a=dst_a3  src_c=N  mmr_c=dst_c3  type=dust
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.n
+ c
+  src_a=A  mmr_a=ncl_a3  src_c=N  mmr_c=ncl_c3  type=seasalt
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+  src_a=A  mmr_a=so4_a3  src_c=N  mmr_c=so4_c3  type=sulfate
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+ 
+ name=mam4_mode4  type=primary_carbon
+  src_a=A  num_a=num_a4 src_c=N  num_c=num_c4
+  src_a=A  mmr_a=pom_a4  src_c=N  mmr_c=pom_c4  type=p-organic
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc
+  src_a=A  mmr_a=bc_a4  src_c=N  mmr_c=bc_c4  type=black-c
+      prop file=
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc
+ ma_convproc_readnl: convproc_do_gas =  F
+ ma_convproc_readnl: deepconv_wetdep_history =  T
+ ma_convproc_readnl: convproc_do_deep =  T
+ ma_convproc_readnl: convproc_do_shallow =  F
+ ma_convproc_readnl: convproc_do_evaprain_atonce =  F
+ ma_convproc_readnl: convproc_pom_spechygro =   -1.00000000000000     
+ ma_convproc_readnl: convproc_wup_max =    4.00000000000000     
+ solar_data_readnl: solar_const (W/m2) =   -9999.00000000000     
+ solar_data_readnl: solar_irrad_data_file = 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ solar_data_readnl: solar_parms_data_file = 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ solar_data_readnl: solar_euv_data_file = NONE
+ solar_data_readnl: solar_wind_data_file = NONE
+ solar_data_readnl: solar_data_type = FIXED
+ solar_data_readnl: solar_data_ymd  =     20000101
+ solar_data_readnl: solar_data_tod  =            0
+ check_energy options:
+   print_energy_errors = F
+ Rayleigh friction not enabled.
+ dyn_readnl: reading dyn_se_inparm namelist...
+initmpi: Number of MPI processes: 900
+ INITOMP: INFO: openmp not activated
+ HOMME_POSTPROCESS_NAMELIST: omp_get_max_threads() =            1
+ HOMME_POSTPROCESS_NAMELIST: Mesh File:none
+ HOMME_POSTPROCESS_NAMELIST: Reference element projection: cubed_sphere_map=
+           0
+dyn_readnl: se_ftype                    = 2
+dyn_readnl: se_statediag_numtrac        = 3
+dyn_readnl: se_hypervis_subcycle        = 1
+dyn_readnl: se_hypervis_subcycle_sponge = 1
+dyn_readnl: se_hypervis_subcycle_q      = 1
+dyn_readnl: se_large_Courant_incr       =    T
+dyn_readnl: se_limiter_option           = 8
+dyn_readnl: se_ne                       = 30
+dyn_readnl: se_npes                     = 900
+dyn_readnl: se_nsplit                   = 5
+dyn_readnl: se_phys_dyn_cp              = 1
+dyn_readnl: se_nu_top                     =  0.00E+00
+dyn_readnl: se_qsplit                     = 1
+dyn_readnl: se_rsplit                     = 4
+dyn_readnl: se_statefreq                  = 0
+dyn_readnl: se_tstep_type                 = 4
+dyn_readnl: se_vert_remap_uvTq_alg        = -9
+dyn_readnl: se_vert_remap_tracer_alg      = 10
+dyn_readnl: se_hypervis_dynamic_ref_state =    F
+dyn_readnl: lcp_moist                     =    T
+dyn_readnl: se_fvm_supercycling           = 4
+dyn_readnl: se_fvm_supercycling_jet       = 4
+dyn_readnl: se_kmin_jet                   = 1
+dyn_readnl: se_kmax_jet                   = 70
+dyn_readnl: physics will run on FVM points; advection by CSLAM
+dyn_readnl: se_fv_nphys = 3
+dyn_readnl: se_horz_num_threads = 1
+dyn_readnl: se_vert_num_threads = 1
+dyn_readnl: se_tracer_num_threads = 1
+dyn_readnl: do not write grid file
+dyn_readnl: write gll corners to SEMapping.nc = F
+dyn_readnl: write restart data on unstructured grid = F
+dyn_readnl: se_raytau0         =  0.00E+00
+dyn_readnl: se_raykrange       =  0.30E+01
+dyn_readnl: se_rayk0           = 2
+dyn_readnl: se_molecular_diff  =  0.10E+03
+ native_mapping_readnl: Check for native_mapping_nl namelist in atm_in
+ native_mapping_readnl: No native_mapping_nl namelist found
+ qneg_readnl
+ : QNEG statistics will be collected and printed at the end of the run
+ (GETFIL): attempting to find local file FWsc2000.ne30pg3_ne30pg3_nlev70.i.nc
+ (GETFIL): using /glade/p/cgd/amp/pel/inic/FWsc2000.ne30pg3_ne30pg3_nlev70.i.nc
+ (GETFIL): attempting to find local file 
+ ne30pg3_nc3000_Co060_Fi001_PF_nullRR_Nsw042_20171014.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/topo/se/ne30pg3_nc3000_Co060_Fi001_PF_
+ nullRR_Nsw042_20171014.nc
+ hycoef_read: read hyai, hybi, hyam, hybm
+ Layer Locations (*1000) 
+   1    0.0000              0.0000              0.0000
+                  0.0000              0.0000              0.0000
+   2    0.0000              0.0000              0.0000
+                  0.0000              0.0000              0.0000
+   3    0.0000              0.0000              0.0000
+                  0.0000              0.0000              0.0000
+   4    0.0000              0.0000              0.0000
+                  0.0000              0.0000              0.0000
+   5    0.0000              0.0000              0.0000
+                  0.0000              0.0000              0.0000
+   6    0.0001              0.0000              0.0001
+                  0.0001              0.0000              0.0001
+   7    0.0001              0.0000              0.0001
+                  0.0001              0.0000              0.0001
+   8    0.0001              0.0000              0.0001
+                  0.0002              0.0000              0.0002
+   9    0.0002              0.0000              0.0002
+                  0.0003              0.0000              0.0003
+  10    0.0004              0.0000              0.0004
+                  0.0005              0.0000              0.0005
+  11    0.0007              0.0000              0.0007
+                  0.0009              0.0000              0.0009
+  12    0.0011              0.0000              0.0011
+                  0.0015              0.0000              0.0015
+  13    0.0018              0.0000              0.0018
+                  0.0024              0.0000              0.0024
+  14    0.0030              0.0000              0.0030
+                  0.0040              0.0000              0.0040
+  15    0.0050              0.0000              0.0050
+                  0.0066              0.0000              0.0066
+  16    0.0082              0.0000              0.0082
+                  0.0108              0.0000              0.0108
+  17    0.0135              0.0000              0.0135
+                  0.0179              0.0000              0.0179
+  18    0.0223              0.0000              0.0223
+                  0.0296              0.0000              0.0296
+  19    0.0368              0.0000              0.0368
+                  0.0487              0.0000              0.0487
+  20    0.0607              0.0000              0.0607
+                  0.0799              0.0000              0.0799
+  21    0.0992              0.0000              0.0992
+                  0.1283              0.0000              0.1283
+  22    0.1574              0.0000              0.1574
+                  0.1981              0.0000              0.1981
+  23    0.2388              0.0000              0.2388
+                  0.2920              0.0000              0.2920
+  24    0.3452              0.0000              0.3452
+                  0.4102              0.0000              0.4102
+  25    0.4751              0.0000              0.4751
+                  0.5535              0.0000              0.5535
+  26    0.6318              0.0000              0.6318
+                  0.7305              0.0000              0.7305
+  27    0.8292              0.0000              0.8292
+                  0.9559              0.0000              0.9559
+  28    1.0827              0.0000              1.0827
+                  1.2448              0.0000              1.2448
+  29    1.4068              0.0000              1.4068
+                  1.6128              0.0000              1.6128
+  30    1.8189              0.0000              1.8189
+                  2.0793              0.0000              2.0793
+  31    2.3398              0.0000              2.3398
+                  2.6674              0.0000              2.6674
+  32    2.9951              0.0000              2.9951
+                  3.4049              0.0000              3.4049
+  33    3.8147              0.0000              3.8147
+                  4.3246              0.0000              4.3246
+  34    4.8344              0.0000              4.8344
+                  5.4654              0.0000              5.4654
+  35    6.0964              0.0000              6.0964
+                  6.8729              0.0000              6.8729
+  36    7.6493              0.0000              7.6493
+                  8.5997              0.0000              8.5997
+  37    9.5501              0.0000              9.5501
+                 10.7071              0.0000             10.7071
+  38   11.8640              0.0000             11.8640
+                 13.2648              0.0000             13.2648
+  39   14.6655              0.0000             14.6655
+                 16.3518              0.0000             16.3518
+  40   18.0380              0.0000             18.0380
+                 20.0568              0.0000             20.0568
+  41   22.0755              0.0000             22.0755
+                 24.4790              0.0000             24.4790
+  42   26.8825              0.0000             26.8825
+                 29.7280              0.0000             29.7280
+  43   32.5735              0.0000             32.5735
+                 35.9233              0.0000             35.9233
+  44   39.2730              0.0000             39.2730
+                 43.1938              0.0000             43.1938
+  45   47.1145              0.0000             47.1145
+                 51.6775              0.0000             51.6775
+  46   56.2405              0.0000             56.2405
+                 61.5205              0.0000             61.5205
+  47   66.8005              0.0000             66.8005
+                 73.7510              0.0000             73.7510
+  48   80.7014              0.0000             80.7014
+                 87.8212              0.0000             87.8212
+  49   94.9410              0.0000             94.9410
+                103.3171              0.0000            103.3171
+  50  111.6932              0.0000            111.6932
+                121.5472              0.0000            121.5472
+  51  131.4013              0.0000            131.4013
+                142.9940              0.0000            142.9940
+  52  154.5868              0.0000            154.5868
+                168.2251              0.0000            168.2251
+  53  181.8634              0.0000            181.8634
+                178.2307             19.6774            197.9081
+  54  174.5980             39.3548            213.9528
+                170.3243             62.5043            232.8286
+  55  166.0507             85.6538            251.7044
+                161.0229            112.8879            273.9108
+  56  155.9952            140.1221            296.1172
+                150.0803            172.1616            322.2419
+  57  144.1654            204.2012            348.3666
+                137.2069            241.8940            379.1009
+  58  130.2483            279.5869            409.8352
+                122.0619            323.9306            445.9926
+  59  113.8756            368.2744            482.1499
+                104.2447            420.4425            524.6872
+  60   94.6139            472.6106            567.2244
+                 84.9792            524.7995            609.7787
+  61   75.3445            576.9885            652.3330
+                 66.5017            624.8877            691.3894
+  62   57.6589            672.7870            730.4459
+                 50.1968            713.2077            763.4045
+  63   42.7346            753.6284            796.3631
+                 37.1887            783.6697            820.8584
+  64   31.6427            813.7110            845.3537
+                 28.4319            831.1028            859.5348
+  65   25.2212            848.4946            873.7159
+                 22.2090            864.8113            887.0202
+  66   19.1967            881.1279            900.3246
+                 16.4074            896.2372            912.6445
+  67   13.6180            911.3464            924.9645
+                 11.0746            925.1238            936.1984
+  68    8.5311            938.9012            947.4323
+                  6.2550            951.2305            957.4855
+  69    3.9788            963.5598            967.5386
+                  1.9894            974.3360            976.3254
+  70    0.0000            985.1122            985.1122
+                  0.0000            992.5561            992.5561
+  71    0.0000           1000.0000           1000.0000
+ reference pressures (Pa)
+   1         0.0005
+                            0.0006         0.0003
+   2         0.0007
+                            0.0010         0.0005
+   3         0.0012
+                            0.0016         0.0008
+   4         0.0020
+                            0.0027         0.0013
+   5         0.0033
+                            0.0044         0.0022
+   6         0.0055
+                            0.0073         0.0036
+   7         0.0090
+                            0.0120         0.0059
+   8         0.0149
+                            0.0197         0.0097
+   9         0.0246
+                            0.0325         0.0159
+  10         0.0405
+                            0.0537         0.0263
+  11         0.0668
+                            0.0885         0.0433
+  12         0.1101
+                            0.1458         0.0714
+  13         0.1816
+                            0.2405         0.1178
+  14         0.2993
+                            0.3978         0.1969
+  15         0.4963
+                            0.6557         0.3188
+  16         0.8151
+                            1.0814         0.5326
+  17         1.3477
+                            1.7898         0.8842
+  18         2.2319
+                            2.9558         1.4478
+  19         3.6797
+                            4.8731         2.3868
+  20         6.0665
+                            7.9911         3.8492
+  21         9.9157
+                           12.8273         5.8233
+  22        15.7390
+                           19.8120         8.1460
+  23        23.8850
+                           29.2025        10.6350
+  24        34.5200
+                           41.0168        12.9935
+  25        47.5135
+                           55.3470        15.6670
+  26        63.1805
+                           73.0480        19.7350
+  27        82.9155
+                           95.5948        25.3585
+  28       108.2740
+                          124.4795        32.4110
+  29       140.6850
+                          161.2850        41.2000
+  30       181.8850
+                          207.9325        52.0950
+  31       233.9800
+                          266.7425        65.5250
+  32       299.5050
+                          340.4875        81.9650
+  33       381.4700
+                          432.4575       101.9750
+  34       483.4450
+                          546.5400       126.1900
+  35       609.6350
+                          687.2850       155.3000
+  36       764.9350
+                          859.9725       190.0750
+  37       955.0100
+                         1070.7050       231.3900
+  38      1186.4000
+                         1326.4750       280.1500
+  39      1466.5500
+                         1635.1751       337.2501
+  40      1803.8001
+                         2005.6751       403.7499
+  41      2207.5500
+                         2447.9000       480.6999
+  42      2688.2499
+                         2972.7999       569.0999
+  43      3257.3499
+                         3592.3250       669.9502
+  44      3927.3001
+                         4319.3750       784.1498
+  45      4711.4499
+                         5167.7499       912.6000
+  46      5624.0499
+                         6152.0498      1055.9998
+  47      6680.0497
+                         7375.0958      1390.0921
+  48      8070.1418
+                         8782.1230      1423.9624
+  49      9494.1042
+                        10331.7127      1675.2169
+  50     11169.3211
+                        12154.7241      1970.8060
+  51     13140.1271
+                        14299.4039      2318.5536
+  52     15458.6807
+                        16822.5080      2727.6546
+  53     18186.3353
+                        19790.8087      3208.9468
+  54     21395.2821
+                        23282.8619      3775.1596
+  55     25170.4417
+                        27391.0817      4441.2799
+  56     29611.7216
+                        32224.1902      5224.9372
+  57     34836.6588
+                        37910.0904      6146.8631
+  58     40983.5219
+                        44599.2574      7231.4709
+  59     48214.9929
+                        52468.7175      8507.4492
+  60     56722.4421
+                        60977.8695      8510.8548
+  61     65233.2969
+                        69138.9430      7811.2923
+  62     73044.5892
+                        76340.4481      6591.7179
+  63     79636.3071
+                        82085.8369      4899.0596
+  64     84535.3667
+                        85953.4767      2836.2200
+  65     87371.5866
+                        88702.0249      2660.8765
+  66     90032.4631
+                        91264.4547      2463.9831
+  67     92496.4462
+                        93619.8398      2246.7872
+  68     94743.2335
+                        95748.5480      2010.6290
+  69     96753.8625
+                        97632.5407      1757.3566
+  70     98511.2190
+                        99255.6095      1488.7810
+  71    100000.0000
+ PRIM_INIT1: creating cube topology...
+ ...done.
+ PRIM_INIT1: total number of elements nelem =         5400
+ PRIM_INIT1: partitioning graph using SF Curve...
+ allocating physgrid grid vars
+ fv_nphys,nhc_phys,nhe_phys,nhr_phys,ns_phys =            3           3
+           0           2           3
+ PRIM_INIT1: init shared boundary_exchange buffers
+ PRIM_INIT1: initializing cube elements...
+ PRIM_INIT1: running mass_matrix
+PRIM_INIT1: re-initializing cube elements: area correction= 0.99999999999943145
+ PRIM_INIT1: re-running mass_matrix
+ PRIM_INIT1: running global_dof
+ PRIM_INIT1: max_num_threads=           1
+                                            
+ |-----------------------------------------|
+ | FVM tracer transport scheme information |
+ |-----------------------------------------|
+                                            
+ Running consistent SE-CSLAM, Lauritzen et al. (2017, MWR).
+ CSLAM = Conservative Semi-LAgrangian Multi-tracer scheme
+ Lauritzen et al., (2010), J. Comput. Phys.
+   
+                                             
+ Done Tracer transport scheme information    
+                                             
+ fvm resolution is nc*nc in each element: nc =            3
+ ntrac,ntrac_d=          41          41
+ qsize,qsize_d=           5          10
+   
+ ns==3: using quadratic interpolation for mapping cell averages values across ed
+ ges
+ Note that ns=4 is default CSLAM setting used in Lauritzen et al. (2010)
+ so this option is slightly less accurate (but the stencil is smaller near panel
+  edges!)
+ PRIM_INIT1: initialize basic fvm coordinate variables
+ PRIM_INIT1: end of prim_init
+ dp_init: Initialized phys2fvm/fvm2phys mapping vars
+Grid: GLL, ID =  101, lat coord  = lat_d, lon coord  = lon_d, unstruct   =  T, block_ind  =  F, zonal_grid =  F
+Attribute: area_d, long name = 'gll grid areas'
+           dimname = ncol_d
+Attribute: np, long name = ''
+           value =            4
+Attribute: ne, long name = ''
+           value =           30
+Grid: FVM, ID =  102, lat coord  = lat_fvm, lon coord  = lon_fvm, unstruct   =  T, block_ind  =  F, zonal_grid =  F
+Attribute: area_fvm, long name = 'fvm grid areas'
+           dimname = ncol_fvm
+Attribute: nc, long name = ''
+           value =            3
+Attribute: ne, long name = ''
+           value =           30
+Grid: physgrid_d, ID =  103, lat coord  = lat, lon coord  = lon, unstruct   =  T, block_ind  =  F, zonal_grid =  F
+Attribute: area_physgrid, long name = 'physics grid areas'
+           dimname = ncol
+Attribute: fv_nphys, long name = ''
+           value =            3
+Attribute: ne, long name = ''
+           value =           30
+ create_global_coords: INFO: Non-scalable action: Creating global coords in SE d
+ ycore.
+ create_global_area: INFO: Non-scalable action: gathering global area in SE dyco
+ re.
+Grid: physgrid, ID =  100, lat coord  = lat, lon coord  = lon, unstruct   =  T, block_ind  =  T, zonal_grid =  F
+Attribute: fv_nphys, long name = ''
+           value =            3
+Attribute: ne, long name = ''
+           value =           30
+Attribute: area, long name = 'physics column areas'
+           dimname = ncol
+mode =    1 = "accum           "
+    nspec                            6
+    mprognum, mdiagnum, mprogsfc     1     0     0
+    mcalcwater                       0
+    numptr                  25="num_a1"
+    numptrcw                25="num_c1"
+    spec, massptr     1     19="so4_a1          "
+    spec, massptrcw   1     19="so4_c1          "
+    spec, massptr     2     20="pom_a1          "
+    spec, massptrcw   2     20="pom_c1          "
+    spec, massptr     3     21="soa_a1          "
+    spec, massptrcw   3     21="soa_c1          "
+    spec, massptr     4     22="bc_a1           "
+    spec, massptrcw   4     22="bc_c1           "
+    spec, massptr     5     23="dst_a1          "
+    spec, massptrcw   5     23="dst_c1          "
+    spec, massptr     6     24="ncl_a1          "
+    spec, massptrcw   6     24="ncl_c1          "
+mode =    2 = "aitken          "
+    nspec                            4
+    mprognum, mdiagnum, mprogsfc     1     0     0
+    mcalcwater                       0
+    numptr                  29="num_a2"
+    numptrcw                29="num_c2"
+    spec, massptr     1     26="so4_a2          "
+    spec, massptrcw   1     26="so4_c2          "
+    spec, massptr     2     27="soa_a2          "
+    spec, massptrcw   2     27="soa_c2          "
+    spec, massptr     3     28="ncl_a2          "
+    spec, massptrcw   3     28="ncl_c2          "
+    spec, massptr     4     30="dst_a2          "
+    spec, massptrcw   4     30="dst_c2          "
+mode =    3 = "coarse          "
+    nspec                            3
+    mprognum, mdiagnum, mprogsfc     1     0     0
+    mcalcwater                       0
+    numptr                  34="num_a3"
+    numptrcw                34="num_c3"
+    spec, massptr     1     31="dst_a3          "
+    spec, massptrcw   1     31="dst_c3          "
+    spec, massptr     2     32="ncl_a3          "
+    spec, massptrcw   2     32="ncl_c3          "
+    spec, massptr     3     33="so4_a3          "
+    spec, massptrcw   3     33="so4_c3          "
+mode =    4 = "primary_carbon  "
+    nspec                            2
+    mprognum, mdiagnum, mprogsfc     1     0     0
+    mcalcwater                       0
+    numptr                  37="num_a4"
+    numptrcw                37="num_c4"
+    spec, massptr     1     35="pom_a4          "
+    spec, massptrcw   1     35="pom_c4          "
+    spec, massptr     2     36="bc_a4           "
+    spec, massptrcw   2     36="bc_c4           "
+
+
+*** init_aer_modes mode definitions
+ (GETFIL): attempting to find local file 
+ ozone_strataero_CAM6chem_2000climo_zm_5day_c171004.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_strataero_CAM6chem_2000cli
+ mo_zm_5day_c171004.nc
+ Advected constituent list:
+     1  Q         Specific humidity                                                                                                                 wet
+     2  CLDLIQ    Grid box averaged cloud liquid amount                                                                                             wet
+     3  CLDICE    Grid box averaged cloud ice amount                                                                                                wet
+     4  NUMLIQ    Grid box averaged cloud liquid number                                                                                             wet
+     5  NUMICE    Grid box averaged cloud ice number                                                                                                wet
+     6  RAINQM    Grid box averaged rain amount                                                                                                     wet
+     7  SNOWQM    Grid box averaged snow amount                                                                                                     wet
+     8  NUMRAI    Grid box averaged rain number                                                                                                     wet
+     9  NUMSNO    Grid box averaged snow number                                                                                                     wet
+    10  CH4       CH4                                                                                                                               dry
+    11  N2O       N2O                                                                                                                               dry
+    12  CFC11     CFC11                                                                                                                             dry
+    13  CFC12     CFC12                                                                                                                             dry
+    14  H2O2      H2O2                                                                                                                              dry
+    15  H2SO4     H2SO4                                                                                                                             dry
+    16  SO2       SO2                                                                                                                               dry
+    17  DMS       DMS                                                                                                                               dry
+    18  SOAG      SOAG                                                                                                                              dry
+    19  so4_a1    so4_a1                                                                                                                            dry
+    20  pom_a1    pom_a1                                                                                                                            dry
+    21  soa_a1    soa_a1                                                                                                                            dry
+    22  bc_a1     bc_a1                                                                                                                             dry
+    23  dst_a1    dst_a1                                                                                                                            dry
+    24  ncl_a1    ncl_a1                                                                                                                            dry
+    25  num_a1    num_a1                                                                                                                            dry
+    26  so4_a2    so4_a2                                                                                                                            dry
+    27  soa_a2    soa_a2                                                                                                                            dry
+    28  ncl_a2    ncl_a2                                                                                                                            dry
+    29  num_a2    num_a2                                                                                                                            dry
+    30  dst_a2    dst_a2                                                                                                                            dry
+    31  dst_a3    dst_a3                                                                                                                            dry
+    32  ncl_a3    ncl_a3                                                                                                                            dry
+    33  so4_a3    so4_a3                                                                                                                            dry
+    34  num_a3    num_a3                                                                                                                            dry
+    35  pom_a4    pom_a4                                                                                                                            dry
+    36  bc_a4     bc_a4                                                                                                                             dry
+    37  num_a4    num_a4                                                                                                                            dry
+    38  AOA1      Age-of_air tracer 1                                                                                                               wet
+    39  AOA2      Age-of_air tracer 2                                                                                                               wet
+    40  HORZ      horizontal tracer                                                                                                                 wet
+    41  VERT      vertical tracer                                                                                                                   wet
+ flbc_inti: wrk_date,wrk_sec,wrk_time =     20000101           0
+   729635.000000000     
+  
+ flbc_inti: Species with specified lower boundary values
+ CO2
+ CH4
+ N2O
+ CFCL3
+ CF2CL2
+ CFC11eq
+  
+  
+ flbc_inti: diagnostics
+  
+ lower bndy timing specs
+ type = CYCLICAL
+ cycle year =         2000
+  
+ there are            6  species with specified lower bndy values
+  
+ (GETFIL): attempting to find local file 
+ LBC_2000climo_CMIP6_0p5degLat_c180227.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_2000climo_CMIP6_0p5degLat_c18
+ 0227.nc
+ chem_surfvals_set: ncdate=        10101  co2vmr=  3.703722041654117E-004
+ chem_surfvals_set: ch4vmr=  1.779614189187470E-006  n2ovmr=
+  3.155996167201829E-007  f11vmr=  2.607833459540650E-010  f12vmr=
+  5.389809400200124E-010
+  
+ chem_surfvals_init: Initial ghg surface values:
+   co2 volume mixing ratio =   3.703722041654117E-004
+   ch4 volume mixing ratio =   1.779614189187470E-006
+   n2o volume mixing ratio =   3.155996167201829E-007
+   f11 volume mixing ratio =   2.607833459540650E-010
+   f12 volume mixing ratio =   5.389809400200124E-010
+  
+ Thermodynamic active species Q           1           1   1810.00000000000     
+ Thermodynamic active species CLDLIQ           2           2
+   4188.00000000000     
+ Thermodynamic active species CLDICE           3           3
+   2117.27000000000     
+ Thermodynamic active species RAINQM           4           6
+   4188.00000000000     
+ Thermodynamic active species SNOWQM           5           7
+   2117.27000000000     
+ Creating new decomp: 9!6!!48600!!d6!i3!                              
+ INFLD_REAL_1D_2D: read field PHIS
+ Creating new decomp: 16!6!!48602!!d6!i1!                             
+ INFLD_REAL_1D_2D: read field lat_d
+ INFLD_REAL_1D_2D: read field lon_d
+ INFLD_REAL_1D_2D: read field PS
+ Creating new decomp: 16!70!6!!48602!70!!d6!i1!                       
+ INFLD_REAL_2D_3D: read field U
+ INFLD_REAL_2D_3D: read field V
+ INFLD_REAL_2D_3D: read field T
+ INFLD_REAL_1D_2D: read field lat_d
+ INFLD_REAL_1D_2D: read field lon_d
+ INFLD_REAL_2D_3D: read field Q
+ INFLD_REAL_2D_3D: read field CLDLIQ
+ INFLD_REAL_2D_3D: read field CLDICE
+ INFLD_REAL_2D_3D: read field NUMLIQ
+ INFLD_REAL_2D_3D: read field NUMICE
+ INFLD_REAL_2D_3D: read field RAINQM
+ INFLD_REAL_2D_3D: read field SNOWQM
+ INFLD_REAL_2D_3D: read field NUMRAI
+ INFLD_REAL_2D_3D: read field NUMSNO
+ INFLD_REAL_2D_3D: read field CH4
+ INFLD_REAL_2D_3D: read field N2O
+ INFLD_REAL_2D_3D: read field CFC11
+ INFLD_REAL_2D_3D: read field CFC12
+ INFLD_REAL_2D_3D: read field H2O2
+ INFLD_REAL_2D_3D: read field H2SO4
+ INFLD_REAL_2D_3D: read field SO2
+ INFLD_REAL_2D_3D: read field DMS
+ Field SOAG not found on initial dataset
+           SOAG initialized by "chem_init_cnst"
+ INFLD_REAL_2D_3D: read field so4_a1
+ INFLD_REAL_2D_3D: read field pom_a1
+ Field soa_a1 not found on initial dataset
+           soa_a1 initialized by "chem_init_cnst"
+ INFLD_REAL_2D_3D: read field bc_a1
+ INFLD_REAL_2D_3D: read field dst_a1
+ INFLD_REAL_2D_3D: read field ncl_a1
+ INFLD_REAL_2D_3D: read field num_a1
+ INFLD_REAL_2D_3D: read field so4_a2
+ Field soa_a2 not found on initial dataset
+           soa_a2 initialized by "chem_init_cnst"
+ INFLD_REAL_2D_3D: read field ncl_a2
+ INFLD_REAL_2D_3D: read field num_a2
+ INFLD_REAL_2D_3D: read field dst_a2
+ INFLD_REAL_2D_3D: read field dst_a3
+ INFLD_REAL_2D_3D: read field ncl_a3
+ INFLD_REAL_2D_3D: read field so4_a3
+ INFLD_REAL_2D_3D: read field num_a3
+ INFLD_REAL_2D_3D: read field pom_a4
+ INFLD_REAL_2D_3D: read field bc_a4
+ INFLD_REAL_2D_3D: read field num_a4
+ INFLD_REAL_2D_3D: read field AOA1
+ INFLD_REAL_2D_3D: read field AOA2
+ INFLD_REAL_2D_3D: read field HORZ
+ INFLD_REAL_2D_3D: read field VERT
+ Convert specific/wet mixing ratios to dry
+ ------ info from prim_set_dry_mass --------------------------------------------
+ ---------------
+ Scaling dry surface pressure to global average of =    982.880000000000      hP
+ a
+ Average dry surface pressure in initial condition =    982.890168824264      hP
+ a
+ Average dry surface pressure change               =   -1.01688242644013      Pa
+ Mixing ratios that are wet have been scaled so that total mass of tracer is con
+ served
+ Mixing ratios that are dry have not been changed (mass not conserved in scaling
+  process)
+ ------ end info from prim_set_dry_mass ----------------------------------------
+ ---------------
+ Initializing dp_fvm from spectral element dp
+ FVM tracers, FVM pressure variables and se_area_sphere initialized.
+ dyn_init: initialize molecular diffusion reference profiles
+k, p, km_sponge_factor                   :  1 0.5960E-03****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.2008E+07 0.3154E+07
+k, p, km_sponge_factor                   :  2 0.9827E-03****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.1218E+07 0.1913E+07
+k, p, km_sponge_factor                   :  3 0.1620E-02****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.7388E+06 0.1160E+07
+k, p, km_sponge_factor                   :  4 0.2671E-02****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.4481E+06 0.7037E+06
+k, p, km_sponge_factor                   :  5 0.4404E-02****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.2718E+06 0.4268E+06
+k, p, km_sponge_factor                   :  6 0.7261E-02****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.1648E+06 0.2589E+06
+k, p, km_sponge_factor                   :  7 0.1197E-01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.9998E+05 0.1570E+06
+k, p, km_sponge_factor                   :  8 0.1974E-01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.6064E+05 0.9524E+05
+k, p, km_sponge_factor                   :  9 0.3254E-01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.3678E+05 0.5777E+05
+k, p, km_sponge_factor                   : 10 0.5365E-01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.2231E+05 0.3504E+05
+k, p, km_sponge_factor                   : 11 0.8846E-01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.1353E+05 0.2125E+05
+k, p, km_sponge_factor                   : 12 0.1458E+00****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.8207E+04 0.1289E+05
+k, p, km_sponge_factor                   : 13 0.2405E+00****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.4978E+04 0.7818E+04
+k, p, km_sponge_factor                   : 14 0.3978E+00****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.3009E+04 0.4725E+04
+k, p, km_sponge_factor                   : 15 0.6557E+00****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.1826E+04 0.2867E+04
+k, p, km_sponge_factor                   : 16 0.1081E+01****
+kmvis_ref/rho_ref, kmcnd_ref/(cp*rho_ref):  0.1107E+04 0.1738E+04
+ dyn_init: ksponge_end =           16
+ 
+ Running Global Integral Diagnostic...
+ Area of unit sphere is   1.00000000000000     
+ Should be 1.0 to round off...
+Element area:  max/min    1.377
+Average equatorial node spacing (deg, km) =  1.000  111.20
+norm of Dinv (min, max):    38.302   57.296
+Max Dinv-based element distortion:     1.73
+dx based on Dinv svd:          ave,min,max =    91.40   74.13  110.90
+dx based on sqrt element area: ave,min,max =   102.45   94.71  111.15
+Automatically setting nu_p = 0.10E+16
+Automatically setting nu = 0.50E+15
+Automatically setting nu_div = 0.25E+16
+ : sponge layer viscosity scaling factor
+ nu_lev=           1   500000000000000.     
+ nu_div_lev=           1  2.500000000000000E+015
+ nu_lev=           2   500000000000000.     
+ nu_div_lev=           2  2.500000000000000E+015
+ nu_lev=           3   500000000000000.     
+ nu_div_lev=           3  2.500000000000000E+015
+ nu_lev=           4   500000000000000.     
+ nu_div_lev=           4  2.500000000000000E+015
+ nu_lev=           5   500000000000000.     
+ nu_div_lev=           5  2.500000000000000E+015
+ nu_lev=           6   500000000000000.     
+ nu_div_lev=           6  2.500000000000000E+015
+ nu_lev=           7   500000000000000.     
+ nu_div_lev=           7  2.500000000000000E+015
+ nu_lev=           8   500000000000000.     
+ nu_div_lev=           8  2.500000000000000E+015
+ nu_lev=           9   500000000000000.     
+ nu_div_lev=           9  2.500000000000000E+015
+ nu_lev=          10   500000000000000.     
+ nu_div_lev=          10  2.500000000000000E+015
+ nu_lev=          11   500000000000000.     
+ nu_div_lev=          11  2.500000000000000E+015
+ nu_lev=          12   500000000000000.     
+ nu_div_lev=          12  2.500000000000000E+015
+ nu_lev=          13   500000000000000.     
+ nu_div_lev=          13  2.500000000000000E+015
+ nu_lev=          14   500000000000000.     
+ nu_div_lev=          14  2.500000000000000E+015
+ nu_lev=          15   500000000000000.     
+ nu_div_lev=          15  2.500000000000000E+015
+ nu_lev=          16   500000000000000.     
+ nu_div_lev=          16  2.500000000000000E+015
+ nu_lev=          17   500000000000000.     
+ nu_div_lev=          17  2.500000000000000E+015
+ nu_lev=          18   500000000000000.     
+ nu_div_lev=          18  2.500000000000000E+015
+ nu_lev=          19   500000000000000.     
+ nu_div_lev=          19  2.500000000000000E+015
+ nu_lev=          20   500000000000000.     
+ nu_div_lev=          20  2.500000000000000E+015
+ nu_lev=          21   500000000000000.     
+ nu_div_lev=          21  2.500000000000000E+015
+ nu_lev=          22   500000000000000.     
+ nu_div_lev=          22  2.500000000000000E+015
+ nu_lev=          23   500000000000000.     
+ nu_div_lev=          23  2.500000000000000E+015
+ nu_lev=          24   500000000000000.     
+ nu_div_lev=          24  2.500000000000000E+015
+ nu_lev=          25   500000000000000.     
+ nu_div_lev=          25  2.500000000000000E+015
+ nu_lev=          26   500000000000000.     
+ nu_div_lev=          26  2.500000000000000E+015
+ nu_lev=          27   500000000000000.     
+ nu_div_lev=          27  2.500000000000000E+015
+ nu_lev=          28   500000000000000.     
+ nu_div_lev=          28  2.500000000000000E+015
+ nu_lev=          29   500000000000000.     
+ nu_div_lev=          29  2.500000000000000E+015
+ nu_lev=          30   500000000000000.     
+ nu_div_lev=          30  2.500000000000000E+015
+ nu_lev=          31   500000000000000.     
+ nu_div_lev=          31  2.500000000000000E+015
+ nu_lev=          32   500000000000000.     
+ nu_div_lev=          32  2.500000000000000E+015
+ nu_lev=          33   500000000000000.     
+ nu_div_lev=          33  2.500000000000000E+015
+ nu_lev=          34   500000000000000.     
+ nu_div_lev=          34  2.500000000000000E+015
+ nu_lev=          35   500000000000000.     
+ nu_div_lev=          35  2.500000000000000E+015
+ nu_lev=          36   500000000000000.     
+ nu_div_lev=          36  2.500000000000000E+015
+ nu_lev=          37   500000000000000.     
+ nu_div_lev=          37  2.500000000000000E+015
+ nu_lev=          38   500000000000000.     
+ nu_div_lev=          38  2.500000000000000E+015
+ nu_lev=          39   500000000000000.     
+ nu_div_lev=          39  2.500000000000000E+015
+ nu_lev=          40   500000000000000.     
+ nu_div_lev=          40  2.500000000000000E+015
+ nu_lev=          41   500000000000000.     
+ nu_div_lev=          41  2.500000000000000E+015
+ nu_lev=          42   500000000000000.     
+ nu_div_lev=          42  2.500000000000000E+015
+ nu_lev=          43   500000000000000.     
+ nu_div_lev=          43  2.500000000000000E+015
+ nu_lev=          44   500000000000000.     
+ nu_div_lev=          44  2.500000000000000E+015
+ nu_lev=          45   500000000000000.     
+ nu_div_lev=          45  2.500000000000000E+015
+ nu_lev=          46   500000000000000.     
+ nu_div_lev=          46  2.500000000000000E+015
+ nu_lev=          47   500000000000000.     
+ nu_div_lev=          47  2.500000000000000E+015
+ nu_lev=          48   500000000000000.     
+ nu_div_lev=          48  2.500000000000000E+015
+ nu_lev=          49   500000000000000.     
+ nu_div_lev=          49  2.500000000000000E+015
+ nu_lev=          50   500000000000000.     
+ nu_div_lev=          50  2.500000000000000E+015
+ nu_lev=          51   500000000000000.     
+ nu_div_lev=          51  2.500000000000000E+015
+ nu_lev=          52   500000000000000.     
+ nu_div_lev=          52  2.500000000000000E+015
+ nu_lev=          53   500000000000000.     
+ nu_div_lev=          53  2.500000000000000E+015
+ nu_lev=          54   500000000000000.     
+ nu_div_lev=          54  2.500000000000000E+015
+ nu_lev=          55   500000000000000.     
+ nu_div_lev=          55  2.500000000000000E+015
+ nu_lev=          56   500000000000000.     
+ nu_div_lev=          56  2.500000000000000E+015
+ nu_lev=          57   500000000000000.     
+ nu_div_lev=          57  2.500000000000000E+015
+ nu_lev=          58   500000000000000.     
+ nu_div_lev=          58  2.500000000000000E+015
+ nu_lev=          59   500000000000000.     
+ nu_div_lev=          59  2.500000000000000E+015
+ nu_lev=          60   500000000000000.     
+ nu_div_lev=          60  2.500000000000000E+015
+ nu_lev=          61   500000000000000.     
+ nu_div_lev=          61  2.500000000000000E+015
+ nu_lev=          62   500000000000000.     
+ nu_div_lev=          62  2.500000000000000E+015
+ nu_lev=          63   500000000000000.     
+ nu_div_lev=          63  2.500000000000000E+015
+ nu_lev=          64   500000000000000.     
+ nu_div_lev=          64  2.500000000000000E+015
+ nu_lev=          65   500000000000000.     
+ nu_div_lev=          65  2.500000000000000E+015
+ nu_lev=          66   500000000000000.     
+ nu_div_lev=          66  2.500000000000000E+015
+ nu_lev=          67   500000000000000.     
+ nu_div_lev=          67  2.500000000000000E+015
+ nu_lev=          68   500000000000000.     
+ nu_div_lev=          68  2.500000000000000E+015
+ nu_lev=          69   500000000000000.     
+ nu_div_lev=          69  2.500000000000000E+015
+ nu_lev=          70   500000000000000.     
+ nu_div_lev=          70  2.500000000000000E+015
+Model top is   0.00045005Pa
+ 
+Timestepping methods used in dynamical core:
+
+   * Kinnmark&Gray RK3 5 stage (3rd order)                                      
+                                                                                
+                                                                                
+                    
+   * Spectral-element advection uses SSP preservation RK3
+   * Viscosity operators use forward Euler
+   * CSLAM uses two time-levels backward trajectory method
+ 
+Estimates for maximum stable and actual time-steps for different aspects of algorithm:
+(assume max wind is 400.00000000m/s)
+(assume max gravity wave speed is 342m/s)
+ 
+* dt_dyn        (time-stepping dycore  ; u,v,T,dM) <     304.38s      90.00s
+* dt_dyn_vis    (hyperviscosity)       ; u,v,T,dM) <     135.91s      90.00s
+* dt_tracer_se  (time-stepping tracers ; q       ) <      92.67s      90.00s
+* dt_tracer_vis (hyperviscosity tracers; q       ) <     339.77s     90.00s
+* dt_tracer_fvm (time-stepping tracers ; q       ) <     555.99s     360.00
+* dt_remap (vertical remap dt)     360.00
+* dt    (del2 sponge           ; u,v,T,dM) <     130.68s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <     215.46s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <     355.24s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <     585.69s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <     965.63s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <    1592.09s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <    2624.93s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <    4327.71s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <    7135.14s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <   11763.90s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <   19395.61s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <   31977.83s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <   52722.20s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <   87226.26s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <  143763.57s     90.00s
+* dt    (del2 sponge           ; u,v,T,dM) <  237101.64s     90.00s
+  
+ tstep_type =            4
+CAM dtime (dt_phys):               1800.00
+ CAM-SE uses dry-mass vertical coordinates
+ initial state:
+ nstep=           0  time=  0.000000000000000E+000  [day]
+   
+ STATE DIAGNOSTICS
+   
+                                MIN                    MAX              AVE (hPa)      REL. MASS. CHANGE
+  U          -0.125835495982892E+03  0.176654361418041E+03
+  V          -0.121721667668885E+03  0.155933399658162E+03
+  T           0.137721549703181E+03  0.798823172159366E+03
+  OMEGA      -0.219634104087796E+01  0.159320698913385E+01
+  OMEGA CN    0.000000000000000E+00  0.000000000000000E+00
+  PSDRY(fvm)  0.531737835683086E+05  0.104596664480032E+06  0.982879995499511E+03  0.000000000000000E+00
+  PS(fvm)     0.531889446737852E+05  0.103987812766677E+06  0.985223331298774E+03  0.000000000000000E+00
+  PSDRY(gll)  0.531575433677077E+05  0.104613471554370E+06  0.982880000000000E+03  0.000000000000000E+00
+  PS(gll)     0.531719174458197E+05  0.104669254831965E+06  0.985223186864064E+03  0.000000000000000E+00
+  Q           0.104227325821211E-08  0.211012916945347E-01  0.233095073310398E+01  0.000000000000000E+00
+  CLDLIQ      0.000000000000000E+00  0.976728880673597E-03  0.606208312746492E-02  0.000000000000000E+00
+  CLDICE      0.000000000000000E+00  0.261906826007673E-03  0.103495186225939E-02  0.000000000000000E+00
+   
+ FORCING DIAGNOSTICS
+   
+                                MIN                    MAX
+  FT          0.000000000000000E+00  0.000000000000000E+00
+  FM          0.000000000000000E+00  0.000000000000000E+00
+  FQ          0.000000000000000E+00  0.000000000000000E+00
+  FCLDLIQ     0.000000000000000E+00  0.000000000000000E+00
+  FCLDICE     0.000000000000000E+00  0.000000000000000E+00
+ nstep=           0  time=  0.000000000000000E+000  [day]
+   
+ min/max of wind components in each layer
+   
+ k,V (min max)=            1  -57.6330423473290        68.7193164261226     
+ k,V (min max)=            2  -74.2567082857556        84.9745875256614     
+ k,V (min max)=            3  -86.7575096078627        98.5050946044228     
+ k,V (min max)=            4  -96.8787681804342        113.262932907420     
+ k,V (min max)=            5  -105.086831068325        128.079369529952     
+ k,V (min max)=            6  -108.805625538053        142.513647838051     
+ k,V (min max)=            7  -113.250515345741        149.969220299990     
+ k,V (min max)=            8  -117.749338326017        157.870080644497     
+ k,V (min max)=            9  -116.798211547225        161.514478871545     
+ k,V (min max)=           10  -109.078597680141        154.629845411669     
+ k,V (min max)=           11  -101.208857086567        167.929421834083     
+ k,V (min max)=           12  -110.138006638826        169.239460236417     
+ k,V (min max)=           13  -125.835495982892        176.654361418041     
+ k,V (min max)=           14  -121.771932859566        165.976556007323     
+ k,V (min max)=           15  -107.891033950936        151.055028727623     
+ k,V (min max)=           16  -91.3438972364301        155.933399658162     
+ k,V (min max)=           17  -117.391191665656        145.773153340986     
+ k,V (min max)=           18  -121.721667668885        150.337370696789     
+ k,V (min max)=           19  -114.375073146067        126.166850268070     
+ k,V (min max)=           20  -99.1589833516934        129.066060379210     
+ k,V (min max)=           21  -97.6443129391510        117.411831657581     
+ k,V (min max)=           22  -91.5311707209882        118.475222061689     
+ k,V (min max)=           23  -109.042825384049        114.669682055540     
+ k,V (min max)=           24  -102.070650572995        108.003418597686     
+ k,V (min max)=           25  -93.4625118558701        125.290782269260     
+ k,V (min max)=           26  -87.8798292299617        126.062160173699     
+ k,V (min max)=           27  -82.0163672409520        124.388867680074     
+ k,V (min max)=           28  -78.2488322299108        125.458882441499     
+ k,V (min max)=           29  -77.2427320524269        126.167610449776     
+ k,V (min max)=           30  -73.1936668549476        126.637951943722     
+ k,V (min max)=           31  -68.7878378368642        122.946975943777     
+ k,V (min max)=           32  -63.6491292244568        113.145740329884     
+ k,V (min max)=           33  -60.8722358872525        104.007436351615     
+ k,V (min max)=           34  -56.1435870336358        96.3195568649738     
+ k,V (min max)=           35  -54.2180202532617        86.4069766539335     
+ k,V (min max)=           36  -53.6617099140621        80.5488428655020     
+ k,V (min max)=           37  -53.1219200517555        74.8573190659012     
+ k,V (min max)=           38  -52.3922359378687        66.5981219667801     
+ k,V (min max)=           39  -50.7952755547591        58.1364654188994     
+ k,V (min max)=           40  -48.6543403003576        55.8584486801108     
+ k,V (min max)=           41  -46.6735678314624        52.5853603214162     
+ k,V (min max)=           42  -43.0971555778433        48.2227466577985     
+ k,V (min max)=           43  -38.5098357504538        46.1140782415411     
+ k,V (min max)=           44  -38.1341402373335        44.1811761454171     
+ k,V (min max)=           45  -37.3236858281371        44.3012345641801     
+ k,V (min max)=           46  -35.9013112830156        45.9984914399559     
+ k,V (min max)=           47  -34.1320883890930        49.4277628218925     
+ k,V (min max)=           48  -40.8876695203834        61.2637397241250     
+ k,V (min max)=           49  -43.8441979802084        66.5464636908138     
+ k,V (min max)=           50  -46.0523149539787        81.2508866104085     
+ k,V (min max)=           51  -41.1264697324180        89.3426961030246     
+ k,V (min max)=           52  -39.1006029022938        95.6234155818824     
+ k,V (min max)=           53  -45.8480862636405        97.1079266606201     
+ k,V (min max)=           54  -55.0828015825492        94.7305039529752     
+ k,V (min max)=           55  -59.8931509002760        87.4595602515425     
+ k,V (min max)=           56  -56.1603026394202        82.1344203662127     
+ k,V (min max)=           57  -46.1947093155757        75.9224562903440     
+ k,V (min max)=           58  -45.9840371961380        66.7865122760817     
+ k,V (min max)=           59  -42.7647706262956        56.2485118395222     
+ k,V (min max)=           60  -38.5156424228330        51.2743835903432     
+ k,V (min max)=           61  -33.4592557763154        46.4622253519308     
+ k,V (min max)=           62  -29.8065629160214        45.5574619104748     
+ k,V (min max)=           63  -28.4068661490889        44.1505417160382     
+ k,V (min max)=           64  -32.9129786214800        43.0394681057400     
+ k,V (min max)=           65  -33.8920500217548        42.9838258044607     
+ k,V (min max)=           66  -34.2586926892138        42.1068190396944     
+ k,V (min max)=           67  -35.5600721922968        41.1881570769851     
+ k,V (min max)=           68  -34.5245748608284        38.7669777656188     
+ k,V (min max)=           69  -30.1988995863207        34.8453437059150     
+ k,V (min max)=           70  -26.1645555337105        30.9397135771241     
+ Creating new decomp: 16!4!!48600!!d6!i4!                             
+ INFLD_REAL_1D_2D: read field SGH
+ INFLD_REAL_1D_2D: read field SGH30
+ INFLD_REAL_1D_2D: read field LANDM_COSLAT
+ CAM_PIO_CHECK_VAR INFO: variable PBLH is not on file
+ PBLH initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable TPERT is not on file
+ TPERT initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable QPERT is not on file
+ QPERT initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable CUSH is not on file
+ CUSH initialized to 1000.
+ CAM_PIO_CHECK_VAR INFO: variable CLOUD is not on file
+ CLOUD initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable TKE is not on file
+ TKE initialized to 0.01
+ CAM_PIO_CHECK_VAR INFO: variable KVM is not on file
+ KVM initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable KVH is not on file
+ KVH initialized to 0.
+ CAM_PIO_CHECK_VAR INFO: variable CONCLD is not on file
+ CONCLD initialized to 0.
+  *** SATURATION VAPOR PRESSURE TABLE COMPLETED ***
+ (GETFIL): attempting to find local file 
+ mam4_mode1_rrtmg_aeronetdust_sig1.6_dgnh.48_c140304.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode1_rrtmg_aeronetdust
+ _sig1.6_dgnh.48_c140304.nc
+ (GETFIL): attempting to find local file mam4_mode2_rrtmg_aitkendust_c141106.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode2_rrtmg_aitkendust_
+ c141106.nc
+ (GETFIL): attempting to find local file 
+ mam4_mode3_rrtmg_aeronetdust_sig1.2_dgnl.40_c150219.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode3_rrtmg_aeronetdust
+ _sig1.2_dgnl.40_c150219.nc
+ (GETFIL): attempting to find local file mam4_mode4_rrtmg_c130628.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode4_rrtmg_c130628.nc
+ (GETFIL): attempting to find local file 
+ volc_camRRTMG_byradius_sigma1.6_mode1_c170214.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma
+ 1.6_mode1_c170214.nc
+ bulk_props_init: finished for VOLCANIC
+ (GETFIL): attempting to find local file 
+ volc_camRRTMG_byradius_sigma1.6_mode2_c170214.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma
+ 1.6_mode2_c170214.nc
+ bulk_props_init: finished for VOLCANIC
+ (GETFIL): attempting to find local file 
+ volc_camRRTMG_byradius_sigma1.2_mode3_c170214.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma
+ 1.2_mode3_c170214.nc
+ bulk_props_init: finished for VOLCANIC
+ (GETFIL): attempting to find local file sulfate_rrtmg_c080918.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+  _______ hygroscopic growth in visible band _______
+  SO4
+     rh    ext (m^2 kg^-1)      ssa      asm
+  0.000         4317.807    1.000    0.720
+  0.801        11057.994    1.000    0.775
+  0.836        13006.039    1.000    0.779
+  0.858        14348.435    1.000    0.782
+  0.873        15407.559    1.000    0.784
+  0.885        16297.122    1.000    0.786
+  0.896        17071.906    1.000    0.787
+  0.904        18140.209    1.000    0.788
+  0.912        19488.044    1.000    0.789
+  0.919        20770.367    1.000    0.790
+  0.925        21997.414    1.000    0.791
+  0.930        23177.287    1.000    0.792
+  0.935        24316.312    1.000    0.792
+  0.940        25419.106    1.000    0.793
+  0.944        26490.366    1.000    0.794
+  0.948        27532.759    1.000    0.794
+  0.952        29227.676    1.000    0.794
+  0.956        31402.799    1.000    0.795
+  0.959        33611.108    1.000    0.795
+  0.963        35850.418    1.000    0.795
+  0.966        38119.872    1.000    0.796
+  0.969        40419.352    1.000    0.796
+  0.971        42747.903    1.000    0.796
+  0.974        45103.735    1.000    0.796
+  0.977        47489.963    1.000    0.796
+  0.979        49902.035    1.000    0.797
+  0.982        54134.014    1.000    0.797
+  0.984        59507.775    1.000    0.796
+  0.986        65215.107    1.000    0.796
+  0.988        71256.973    1.000    0.796
+  0.990        77635.529    1.000    0.796
+  0.992        84360.733    1.000    0.796
+  0.994        91441.251    1.000    0.796
+  0.996        98884.165    1.000    0.796
+  0.998       106694.639    1.000    0.795
+  1.000       114691.169    1.000    0.795
+ bulk_props_init: finished for SULFATE
+ (GETFIL): attempting to find local file ocpho_rrtmg_c130709.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc
+ bulk_props_init: finished for OCPHO
+ (GETFIL): attempting to find local file ocphi_rrtmg_c100508.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+ bulk_props_init: finished for OCPHI
+ (GETFIL): attempting to find local file bcpho_rrtmg_c100508.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc
+ bulk_props_init: finished for BCPHO
+ (GETFIL): attempting to find local file dust_aeronet_rrtmg_c141106.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.n
+ c
+ bulk_props_init: finished for DUST4
+ (GETFIL): attempting to find local file ssam_rrtmg_c100508.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+ bulk_props_init: finished for SSAM
+ 
+rad_cnst_init: checking for radiative constituents
+ (GETFIL): attempting to find local file SolarForcing1995-2005avg_c160929.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ (GETFIL): attempting to find local file SolarForcing1995-2005avg_c160929.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ solar_data_init: data file = 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ solar_data_init: has_ref_spectrum F
+ (GETFIL): attempting to find local file SolarForcing1995-2005avg_c160929.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ (GETFIL): attempting to find local file SolarForcing1995-2005avg_c160929.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ (GETFIL): attempting to find local file SolarForcing1995-2005avg_c160929.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcing1995-2005avg_c160929
+ .nc
+ sox_inti: has_sox =  T
+ -----------------------------------------
+ mozart will do sox aerosols
+ -----------------------------------------
+
+
+*** init_aer_modes aerosol species-types
+            name :    "so4_a1          "
+     density, MW :    1.77000E+03   1.15000E+02
+           hygro :    5.07000E-01
+    ref index sw       1.36691E+00   1.57930E-01
+    ref index sw       1.31458E+00   5.66869E-02
+    ref index sw       1.35798E+00   2.88634E-03
+    ref index sw       1.38031E+00   1.49071E-03
+    ref index sw       1.39264E+00   5.30385E-04
+    ref index sw       1.40451E+00   1.02977E-04
+    ref index sw       1.41218E+00   1.61967E-05
+    ref index sw       1.42163E+00   1.75123E-06
+    ref index sw       1.42797E+00   2.21436E-08
+    ref index sw       1.43033E+00   1.00000E-08
+    ref index sw       1.44164E+00   1.00000E-08
+    ref index sw       1.46764E+00   1.00000E-08
+    ref index sw       1.48400E+00   1.00000E-08
+    ref index sw       1.16413E+00   5.51134E-01
+    ref index ir       1.89000E+00   2.20000E-01
+    ref index ir       1.91286E+00   1.51857E-01
+    ref index ir       1.93206E+00   8.45717E-02
+    ref index ir       1.58603E+00   2.22508E-01
+    ref index ir       1.67798E+00   1.95000E-01
+    ref index ir       1.75782E+00   4.40688E-01
+    ref index ir       1.85534E+00   6.95944E-01
+    ref index ir       1.59677E+00   6.94662E-01
+    ref index ir       1.14656E+00   4.58766E-01
+    ref index ir       1.26131E+00   1.60606E-01
+    ref index ir       1.42422E+00   1.71577E-01
+    ref index ir       1.35165E+00   1.43521E-01
+    ref index ir       1.37870E+00   1.20252E-01
+    ref index ir       1.38500E+00   1.22229E-01
+    ref index ir       1.38500E+00   1.25818E-01
+    ref index ir       1.36691E+00   1.57930E-01
+            name :    "pom_a1          "
+     density, MW :    1.00000E+03   1.20000E+01
+           hygro :    1.00000E-10
+    ref index sw       1.44301E+00   5.71678E-03
+    ref index sw       1.42000E+00   1.77692E-02
+    ref index sw       1.42000E+00   1.06022E-02
+    ref index sw       1.42000E+00   8.36914E-03
+    ref index sw       1.46322E+00   1.62125E-02
+    ref index sw       1.51000E+00   2.19730E-02
+    ref index sw       1.51000E+00   1.92866E-02
+    ref index sw       1.51959E+00   1.56431E-02
+    ref index sw       1.53000E+00   7.04815E-03
+    ref index sw       1.53000E+00   5.66501E-03
+    ref index sw       1.53000E+00   5.00000E-03
+    ref index sw       1.53000E+00   7.76044E-03
+    ref index sw       1.53000E+00   3.00000E-02
+    ref index sw       1.12360E+00   7.90744E-02
+    ref index ir       1.86000E+00   5.00000E-01
+    ref index ir       1.91429E+00   2.68571E-01
+    ref index ir       1.98794E+00   1.84921E-01
+    ref index ir       1.43871E+00   1.97732E-01
+    ref index ir       1.60557E+00   5.93275E-02
+    ref index ir       1.70004E+00   4.88024E-02
+    ref index ir       1.88822E+00   1.09805E-01
+    ref index ir       2.48902E+00   3.34511E-01
+    ref index ir       1.21874E+00   6.54685E-02
+    ref index ir       1.41924E+00   5.81336E-02
+    ref index ir       1.42562E+00   2.61231E-02
+    ref index ir       1.44637E+00   1.41795E-02
+    ref index ir       1.45748E+00   1.27479E-02
+    ref index ir       1.45814E+00   1.00284E-02
+    ref index ir       1.45515E+00   5.24203E-03
+    ref index ir       1.44301E+00   5.71678E-03
+            name :    "soa_a1          "
+     density, MW :    1.00000E+03   1.20000E+01
+           hygro :    1.40000E-01
+    ref index sw       1.44301E+00   5.71678E-03
+    ref index sw       1.42000E+00   1.77692E-02
+    ref index sw       1.42000E+00   1.06022E-02
+    ref index sw       1.42000E+00   8.36914E-03
+    ref index sw       1.46322E+00   1.62125E-02
+    ref index sw       1.51000E+00   2.19730E-02
+    ref index sw       1.51000E+00   1.92866E-02
+    ref index sw       1.51959E+00   1.56431E-02
+    ref index sw       1.53000E+00   7.04815E-03
+    ref index sw       1.53000E+00   5.66501E-03
+    ref index sw       1.53000E+00   5.00000E-03
+    ref index sw       1.53000E+00   7.76044E-03
+    ref index sw       1.53000E+00   3.00000E-02
+    ref index sw       1.12360E+00   7.90744E-02
+    ref index ir       1.86000E+00   5.00000E-01
+    ref index ir       1.91429E+00   2.68571E-01
+    ref index ir       1.98794E+00   1.84921E-01
+    ref index ir       1.43871E+00   1.97732E-01
+    ref index ir       1.60557E+00   5.93275E-02
+    ref index ir       1.70004E+00   4.88024E-02
+    ref index ir       1.88822E+00   1.09805E-01
+    ref index ir       2.48902E+00   3.34511E-01
+    ref index ir       1.21874E+00   6.54685E-02
+    ref index ir       1.41924E+00   5.81336E-02
+    ref index ir       1.42562E+00   2.61231E-02
+    ref index ir       1.44637E+00   1.41795E-02
+    ref index ir       1.45748E+00   1.27479E-02
+    ref index ir       1.45814E+00   1.00284E-02
+    ref index ir       1.45515E+00   5.24203E-03
+    ref index ir       1.44301E+00   5.71678E-03
+            name :    "bc_a1           "
+     density, MW :    1.70000E+03   1.20000E+01
+           hygro :    1.00000E-10
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+            name :    "dst_a1          "
+     density, MW :    2.60000E+03   1.35000E+02
+           hygro :    6.80000E-02
+    ref index sw       1.51000E+00   1.84371E-02
+    ref index sw       1.52000E+00   2.84231E-02
+    ref index sw       1.53997E+00   7.36022E-03
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.71194E-04
+    ref index sw       1.56000E+00   8.70447E-04
+    ref index sw       1.56000E+00   1.00000E-03
+    ref index sw       1.56000E+00   1.25138E-03
+    ref index sw       1.56000E+00   1.94656E-03
+    ref index sw       1.56000E+00   4.14895E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.17979E+00   1.01466E-01
+    ref index ir       2.34000E+00   7.00000E-01
+    ref index ir       2.90429E+00   8.57143E-01
+    ref index ir       1.74778E+00   4.62063E-01
+    ref index ir       1.50773E+00   2.63401E-01
+    ref index ir       1.91105E+00   3.18746E-01
+    ref index ir       1.82202E+00   2.59881E-01
+    ref index ir       2.91683E+00   6.50000E-01
+    ref index ir       1.55722E+00   3.73459E-01
+    ref index ir       1.24249E+00   9.28417E-02
+    ref index ir       1.44717E+00   1.04984E-01
+    ref index ir       1.43219E+00   6.12462E-02
+    ref index ir       1.47274E+00   2.45385E-02
+    ref index ir       1.49496E+00   1.10449E-02
+    ref index ir       1.50000E+00   7.95709E-03
+    ref index ir       1.50000E+00   6.76051E-03
+    ref index ir       1.51000E+00   1.84371E-02
+            name :    "ncl_a1          "
+     density, MW :    1.90000E+03   5.85000E+01
+           hygro :    1.16000E+00
+    ref index sw       1.48000E+00   1.75734E-03
+    ref index sw       1.53385E+00   7.46154E-03
+    ref index sw       1.43699E+00   2.95161E-03
+    ref index sw       1.44815E+00   1.27686E-03
+    ref index sw       1.45000E+00   7.94256E-04
+    ref index sw       1.46151E+00   5.38080E-04
+    ref index sw       1.46918E+00   3.75357E-04
+    ref index sw       1.47000E+00   1.49874E-04
+    ref index sw       1.49000E+00   2.28249E-07
+    ref index sw       1.50000E+00   1.18424E-08
+    ref index sw       1.50137E+00   7.01937E-08
+    ref index sw       1.51000E+00   1.86616E-06
+    ref index sw       1.51000E+00   5.00000E-06
+    ref index sw       1.40804E+00   1.58149E-02
+    ref index ir       1.74000E+00   1.00000E+00
+    ref index ir       1.76000E+00   1.97857E-01
+    ref index ir       1.77683E+00   1.29206E-01
+    ref index ir       1.45624E+00   3.81179E-02
+    ref index ir       1.41000E+00   1.92021E-02
+    ref index ir       1.48000E+00   1.40000E-02
+    ref index ir       1.56456E+00   1.64555E-02
+    ref index ir       1.62782E+00   2.88872E-02
+    ref index ir       1.40187E+00   1.24378E-02
+    ref index ir       1.43283E+00   6.35857E-03
+    ref index ir       1.55835E+00   1.95886E-02
+    ref index ir       1.45184E+00   2.89957E-03
+    ref index ir       1.48496E+00   1.67735E-03
+    ref index ir       1.48629E+00   1.40000E-03
+    ref index ir       1.48030E+00   1.40000E-03
+    ref index ir       1.48000E+00   1.75734E-03
+            name :    "so4_a2          "
+     density, MW :    1.77000E+03   1.15000E+02
+           hygro :    5.07000E-01
+    ref index sw       1.36691E+00   1.57930E-01
+    ref index sw       1.31458E+00   5.66869E-02
+    ref index sw       1.35798E+00   2.88634E-03
+    ref index sw       1.38031E+00   1.49071E-03
+    ref index sw       1.39264E+00   5.30385E-04
+    ref index sw       1.40451E+00   1.02977E-04
+    ref index sw       1.41218E+00   1.61967E-05
+    ref index sw       1.42163E+00   1.75123E-06
+    ref index sw       1.42797E+00   2.21436E-08
+    ref index sw       1.43033E+00   1.00000E-08
+    ref index sw       1.44164E+00   1.00000E-08
+    ref index sw       1.46764E+00   1.00000E-08
+    ref index sw       1.48400E+00   1.00000E-08
+    ref index sw       1.16413E+00   5.51134E-01
+    ref index ir       1.89000E+00   2.20000E-01
+    ref index ir       1.91286E+00   1.51857E-01
+    ref index ir       1.93206E+00   8.45717E-02
+    ref index ir       1.58603E+00   2.22508E-01
+    ref index ir       1.67798E+00   1.95000E-01
+    ref index ir       1.75782E+00   4.40688E-01
+    ref index ir       1.85534E+00   6.95944E-01
+    ref index ir       1.59677E+00   6.94662E-01
+    ref index ir       1.14656E+00   4.58766E-01
+    ref index ir       1.26131E+00   1.60606E-01
+    ref index ir       1.42422E+00   1.71577E-01
+    ref index ir       1.35165E+00   1.43521E-01
+    ref index ir       1.37870E+00   1.20252E-01
+    ref index ir       1.38500E+00   1.22229E-01
+    ref index ir       1.38500E+00   1.25818E-01
+    ref index ir       1.36691E+00   1.57930E-01
+            name :    "soa_a2          "
+     density, MW :    1.00000E+03   1.20000E+01
+           hygro :    1.40000E-01
+    ref index sw       1.44301E+00   5.71678E-03
+    ref index sw       1.42000E+00   1.77692E-02
+    ref index sw       1.42000E+00   1.06022E-02
+    ref index sw       1.42000E+00   8.36914E-03
+    ref index sw       1.46322E+00   1.62125E-02
+    ref index sw       1.51000E+00   2.19730E-02
+    ref index sw       1.51000E+00   1.92866E-02
+    ref index sw       1.51959E+00   1.56431E-02
+    ref index sw       1.53000E+00   7.04815E-03
+    ref index sw       1.53000E+00   5.66501E-03
+    ref index sw       1.53000E+00   5.00000E-03
+    ref index sw       1.53000E+00   7.76044E-03
+    ref index sw       1.53000E+00   3.00000E-02
+    ref index sw       1.12360E+00   7.90744E-02
+    ref index ir       1.86000E+00   5.00000E-01
+    ref index ir       1.91429E+00   2.68571E-01
+    ref index ir       1.98794E+00   1.84921E-01
+    ref index ir       1.43871E+00   1.97732E-01
+    ref index ir       1.60557E+00   5.93275E-02
+    ref index ir       1.70004E+00   4.88024E-02
+    ref index ir       1.88822E+00   1.09805E-01
+    ref index ir       2.48902E+00   3.34511E-01
+    ref index ir       1.21874E+00   6.54685E-02
+    ref index ir       1.41924E+00   5.81336E-02
+    ref index ir       1.42562E+00   2.61231E-02
+    ref index ir       1.44637E+00   1.41795E-02
+    ref index ir       1.45748E+00   1.27479E-02
+    ref index ir       1.45814E+00   1.00284E-02
+    ref index ir       1.45515E+00   5.24203E-03
+    ref index ir       1.44301E+00   5.71678E-03
+            name :    "ncl_a2          "
+     density, MW :    1.90000E+03   5.85000E+01
+           hygro :    1.16000E+00
+    ref index sw       1.48000E+00   1.75734E-03
+    ref index sw       1.53385E+00   7.46154E-03
+    ref index sw       1.43699E+00   2.95161E-03
+    ref index sw       1.44815E+00   1.27686E-03
+    ref index sw       1.45000E+00   7.94256E-04
+    ref index sw       1.46151E+00   5.38080E-04
+    ref index sw       1.46918E+00   3.75357E-04
+    ref index sw       1.47000E+00   1.49874E-04
+    ref index sw       1.49000E+00   2.28249E-07
+    ref index sw       1.50000E+00   1.18424E-08
+    ref index sw       1.50137E+00   7.01937E-08
+    ref index sw       1.51000E+00   1.86616E-06
+    ref index sw       1.51000E+00   5.00000E-06
+    ref index sw       1.40804E+00   1.58149E-02
+    ref index ir       1.74000E+00   1.00000E+00
+    ref index ir       1.76000E+00   1.97857E-01
+    ref index ir       1.77683E+00   1.29206E-01
+    ref index ir       1.45624E+00   3.81179E-02
+    ref index ir       1.41000E+00   1.92021E-02
+    ref index ir       1.48000E+00   1.40000E-02
+    ref index ir       1.56456E+00   1.64555E-02
+    ref index ir       1.62782E+00   2.88872E-02
+    ref index ir       1.40187E+00   1.24378E-02
+    ref index ir       1.43283E+00   6.35857E-03
+    ref index ir       1.55835E+00   1.95886E-02
+    ref index ir       1.45184E+00   2.89957E-03
+    ref index ir       1.48496E+00   1.67735E-03
+    ref index ir       1.48629E+00   1.40000E-03
+    ref index ir       1.48030E+00   1.40000E-03
+    ref index ir       1.48000E+00   1.75734E-03
+            name :    "dst_a2          "
+     density, MW :    2.60000E+03   1.35000E+02
+           hygro :    6.80000E-02
+    ref index sw       1.51000E+00   1.84371E-02
+    ref index sw       1.52000E+00   2.84231E-02
+    ref index sw       1.53997E+00   7.36022E-03
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.71194E-04
+    ref index sw       1.56000E+00   8.70447E-04
+    ref index sw       1.56000E+00   1.00000E-03
+    ref index sw       1.56000E+00   1.25138E-03
+    ref index sw       1.56000E+00   1.94656E-03
+    ref index sw       1.56000E+00   4.14895E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.17979E+00   1.01466E-01
+    ref index ir       2.34000E+00   7.00000E-01
+    ref index ir       2.90429E+00   8.57143E-01
+    ref index ir       1.74778E+00   4.62063E-01
+    ref index ir       1.50773E+00   2.63401E-01
+    ref index ir       1.91105E+00   3.18746E-01
+    ref index ir       1.82202E+00   2.59881E-01
+    ref index ir       2.91683E+00   6.50000E-01
+    ref index ir       1.55722E+00   3.73459E-01
+    ref index ir       1.24249E+00   9.28417E-02
+    ref index ir       1.44717E+00   1.04984E-01
+    ref index ir       1.43219E+00   6.12462E-02
+    ref index ir       1.47274E+00   2.45385E-02
+    ref index ir       1.49496E+00   1.10449E-02
+    ref index ir       1.50000E+00   7.95709E-03
+    ref index ir       1.50000E+00   6.76051E-03
+    ref index ir       1.51000E+00   1.84371E-02
+            name :    "dst_a3          "
+     density, MW :    2.60000E+03   1.35000E+02
+           hygro :    6.80000E-02
+    ref index sw       1.51000E+00   1.84371E-02
+    ref index sw       1.52000E+00   2.84231E-02
+    ref index sw       1.53997E+00   7.36022E-03
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.00000E-04
+    ref index sw       1.56000E+00   7.71194E-04
+    ref index sw       1.56000E+00   8.70447E-04
+    ref index sw       1.56000E+00   1.00000E-03
+    ref index sw       1.56000E+00   1.25138E-03
+    ref index sw       1.56000E+00   1.94656E-03
+    ref index sw       1.56000E+00   4.14895E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.56000E+00   5.50000E-03
+    ref index sw       1.17979E+00   1.01466E-01
+    ref index ir       2.34000E+00   7.00000E-01
+    ref index ir       2.90429E+00   8.57143E-01
+    ref index ir       1.74778E+00   4.62063E-01
+    ref index ir       1.50773E+00   2.63401E-01
+    ref index ir       1.91105E+00   3.18746E-01
+    ref index ir       1.82202E+00   2.59881E-01
+    ref index ir       2.91683E+00   6.50000E-01
+    ref index ir       1.55722E+00   3.73459E-01
+    ref index ir       1.24249E+00   9.28417E-02
+    ref index ir       1.44717E+00   1.04984E-01
+    ref index ir       1.43219E+00   6.12462E-02
+    ref index ir       1.47274E+00   2.45385E-02
+    ref index ir       1.49496E+00   1.10449E-02
+    ref index ir       1.50000E+00   7.95709E-03
+    ref index ir       1.50000E+00   6.76051E-03
+    ref index ir       1.51000E+00   1.84371E-02
+            name :    "ncl_a3          "
+     density, MW :    1.90000E+03   5.85000E+01
+           hygro :    1.16000E+00
+    ref index sw       1.48000E+00   1.75734E-03
+    ref index sw       1.53385E+00   7.46154E-03
+    ref index sw       1.43699E+00   2.95161E-03
+    ref index sw       1.44815E+00   1.27686E-03
+    ref index sw       1.45000E+00   7.94256E-04
+    ref index sw       1.46151E+00   5.38080E-04
+    ref index sw       1.46918E+00   3.75357E-04
+    ref index sw       1.47000E+00   1.49874E-04
+    ref index sw       1.49000E+00   2.28249E-07
+    ref index sw       1.50000E+00   1.18424E-08
+    ref index sw       1.50137E+00   7.01937E-08
+    ref index sw       1.51000E+00   1.86616E-06
+    ref index sw       1.51000E+00   5.00000E-06
+    ref index sw       1.40804E+00   1.58149E-02
+    ref index ir       1.74000E+00   1.00000E+00
+    ref index ir       1.76000E+00   1.97857E-01
+    ref index ir       1.77683E+00   1.29206E-01
+    ref index ir       1.45624E+00   3.81179E-02
+    ref index ir       1.41000E+00   1.92021E-02
+    ref index ir       1.48000E+00   1.40000E-02
+    ref index ir       1.56456E+00   1.64555E-02
+    ref index ir       1.62782E+00   2.88872E-02
+    ref index ir       1.40187E+00   1.24378E-02
+    ref index ir       1.43283E+00   6.35857E-03
+    ref index ir       1.55835E+00   1.95886E-02
+    ref index ir       1.45184E+00   2.89957E-03
+    ref index ir       1.48496E+00   1.67735E-03
+    ref index ir       1.48629E+00   1.40000E-03
+    ref index ir       1.48030E+00   1.40000E-03
+    ref index ir       1.48000E+00   1.75734E-03
+            name :    "so4_a3          "
+     density, MW :    1.77000E+03   1.15000E+02
+           hygro :    5.07000E-01
+    ref index sw       1.36691E+00   1.57930E-01
+    ref index sw       1.31458E+00   5.66869E-02
+    ref index sw       1.35798E+00   2.88634E-03
+    ref index sw       1.38031E+00   1.49071E-03
+    ref index sw       1.39264E+00   5.30385E-04
+    ref index sw       1.40451E+00   1.02977E-04
+    ref index sw       1.41218E+00   1.61967E-05
+    ref index sw       1.42163E+00   1.75123E-06
+    ref index sw       1.42797E+00   2.21436E-08
+    ref index sw       1.43033E+00   1.00000E-08
+    ref index sw       1.44164E+00   1.00000E-08
+    ref index sw       1.46764E+00   1.00000E-08
+    ref index sw       1.48400E+00   1.00000E-08
+    ref index sw       1.16413E+00   5.51134E-01
+    ref index ir       1.89000E+00   2.20000E-01
+    ref index ir       1.91286E+00   1.51857E-01
+    ref index ir       1.93206E+00   8.45717E-02
+    ref index ir       1.58603E+00   2.22508E-01
+    ref index ir       1.67798E+00   1.95000E-01
+    ref index ir       1.75782E+00   4.40688E-01
+    ref index ir       1.85534E+00   6.95944E-01
+    ref index ir       1.59677E+00   6.94662E-01
+    ref index ir       1.14656E+00   4.58766E-01
+    ref index ir       1.26131E+00   1.60606E-01
+    ref index ir       1.42422E+00   1.71577E-01
+    ref index ir       1.35165E+00   1.43521E-01
+    ref index ir       1.37870E+00   1.20252E-01
+    ref index ir       1.38500E+00   1.22229E-01
+    ref index ir       1.38500E+00   1.25818E-01
+    ref index ir       1.36691E+00   1.57930E-01
+            name :    "pom_a4          "
+     density, MW :    1.00000E+03   1.20000E+01
+           hygro :    1.00000E-10
+    ref index sw       1.44301E+00   5.71678E-03
+    ref index sw       1.42000E+00   1.77692E-02
+    ref index sw       1.42000E+00   1.06022E-02
+    ref index sw       1.42000E+00   8.36914E-03
+    ref index sw       1.46322E+00   1.62125E-02
+    ref index sw       1.51000E+00   2.19730E-02
+    ref index sw       1.51000E+00   1.92866E-02
+    ref index sw       1.51959E+00   1.56431E-02
+    ref index sw       1.53000E+00   7.04815E-03
+    ref index sw       1.53000E+00   5.66501E-03
+    ref index sw       1.53000E+00   5.00000E-03
+    ref index sw       1.53000E+00   7.76044E-03
+    ref index sw       1.53000E+00   3.00000E-02
+    ref index sw       1.12360E+00   7.90744E-02
+    ref index ir       1.86000E+00   5.00000E-01
+    ref index ir       1.91429E+00   2.68571E-01
+    ref index ir       1.98794E+00   1.84921E-01
+    ref index ir       1.43871E+00   1.97732E-01
+    ref index ir       1.60557E+00   5.93275E-02
+    ref index ir       1.70004E+00   4.88024E-02
+    ref index ir       1.88822E+00   1.09805E-01
+    ref index ir       2.48902E+00   3.34511E-01
+    ref index ir       1.21874E+00   6.54685E-02
+    ref index ir       1.41924E+00   5.81336E-02
+    ref index ir       1.42562E+00   2.61231E-02
+    ref index ir       1.44637E+00   1.41795E-02
+    ref index ir       1.45748E+00   1.27479E-02
+    ref index ir       1.45814E+00   1.00284E-02
+    ref index ir       1.45515E+00   5.24203E-03
+    ref index ir       1.44301E+00   5.71678E-03
+            name :    "bc_a4           "
+     density, MW :    1.70000E+03   1.20000E+01
+           hygro :    1.00000E-10
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index sw       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+    ref index ir       1.95000E+00   7.90000E-01
+
+mode-pointer output from subr initaermodes_setspecptrs
+ modeptr_accum    =           1
+ modeptr_aitken   =           2
+ modeptr_ufine    =  -999888777
+ modeptr_coarse   =           3
+ modeptr_pcarbon  =           4
+ modeptr_fineseas =  -999888777
+ modeptr_finedust =  -999888777
+ modeptr_coarseas =  -999888777
+ modeptr_coardust =  -999888777
+
+species-pointer output from subr initaermodes_setspecptrs
+mode            id  name_a              id  name_cw
+sulfate    
+   1            19  so4_a1              19  so4_a1      lptr_so4_a/cw_amode
+   2            26  so4_a2              26  so4_a2      lptr_so4_a/cw_amode
+   3            33  so4_a3              33  so4_a3      lptr_so4_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_so4_a/cw_amode
+msa        
+   1    -999888777  none        -999888777  none        lptr_msa_a/cw_amode
+   2    -999888777  none        -999888777  none        lptr_msa_a/cw_amode
+   3    -999888777  none        -999888777  none        lptr_msa_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_msa_a/cw_amode
+ammonium   
+   1    -999888777  none        -999888777  none        lptr_nh4_a/cw_amode
+   2    -999888777  none        -999888777  none        lptr_nh4_a/cw_amode
+   3    -999888777  none        -999888777  none        lptr_nh4_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_nh4_a/cw_amode
+nitrate    
+   1    -999888777  none        -999888777  none        lptr_no3_a/cw_amode
+   2    -999888777  none        -999888777  none        lptr_no3_a/cw_amode
+   3    -999888777  none        -999888777  none        lptr_no3_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_no3_a/cw_amode
+p-organic  
+   1            20  pom_a1              20  pom_a1      lptr2_pom01_a/cw_amode
+   2    -999888777  none        -999888777  none        lptr2_pom01_a/cw_amode
+   3    -999888777  none        -999888777  none        lptr2_pom01_a/cw_amode
+   4            35  pom_a4              35  pom_a4      lptr2_pom01_a/cw_amode
+s-organic  
+   1            21  soa_a1              21  soa_a1      lptr2_soa01_a/cw_amode
+   2            27  soa_a2              27  soa_a2      lptr2_soa01_a/cw_amode
+   3    -999888777  none        -999888777  none        lptr2_soa01_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr2_soa01_a/cw_amode
+   1            18  SOAG                                lptr2_soa01_g
+black-c    
+   1            22  bc_a1               22  bc_a1       lptr2_bc01 _a/cw_amode
+   2    -999888777  none        -999888777  none        lptr2_bc01 _a/cw_amode
+   3    -999888777  none        -999888777  none        lptr2_bc01 _a/cw_amode
+   4            36  bc_a4               36  bc_a4       lptr2_bc01 _a/cw_amode
+seasalt   
+   1            24  ncl_a1              24  ncl_a1      lptr_nacl_a/cw_amode
+   2            28  ncl_a2              28  ncl_a2      lptr_nacl_a/cw_amode
+   3            32  ncl_a3              32  ncl_a3      lptr_nacl_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_nacl_a/cw_amode
+dust       
+   1            23  dst_a1              23  dst_a1      lptr_dust_a/cw_amode
+   2            30  dst_a2              30  dst_a2      lptr_dust_a/cw_amode
+   3            31  dst_a3              31  dst_a3      lptr_dust_a/cw_amode
+   4    -999888777  none        -999888777  none        lptr_dust_a/cw_amode
+
+mode, modename_amode, qneg3_worst_thresh_amode
+  1  accum              1.000E+03
+  2  aitken             1.000E+03
+  3  coarse             1.000E+00
+  4  primary_carbon     1.000E+03
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooa out of range for  pom_a1
+ipair, modefrm, ispecfrm, lspecfrma, ispectoo, lspectooa =     2     1     2    20   -99     0
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooc out of range for  pom_c1
+ipair, modefrm, ispecfrm, lspecfrmc, ispectoo, lspectooc =     2     1     2    20   -99     0
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooa out of range for  soa_a1
+ipair, modefrm, ispecfrm, lspecfrma, ispectoo, lspectooa =     2     1     3    21   -99     0
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooc out of range for  soa_c1
+ipair, modefrm, ispecfrm, lspecfrmc, ispectoo, lspectooc =     2     1     3    21   -99     0
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooa out of range for  bc_a1
+ipair, modefrm, ispecfrm, lspecfrma, ispectoo, lspectooa =     2     1     4    22   -99     0
+
+*** subr. modal_aero_rename_acc_crs_init
+lspectooc out of range for  bc_c1
+ipair, modefrm, ispecfrm, lspecfrmc, ispectoo, lspectooc =     2     1     4    22   -99     0
+
+subr. modal_aero_rename_acc_crs_init
+method_optbb_renamexf            2
+
+pair  1     mode  2 ---> mode  1     igrow_shrink  1     ixferable_all  1
+     spec 29=num_a2           ---> spec 25=num_a1          
+     spec 29=num_c2               ---> spec 25=num_c1              
+     spec 26=so4_a2           ---> spec 19=so4_a1          
+     spec 26=so4_c2               ---> spec 19=so4_c1              
+     spec 27=soa_a2           ---> spec 21=soa_a1          
+     spec 27=soa_c2               ---> spec 21=soa_c1              
+     spec 28=ncl_a2           ---> spec 24=ncl_a1          
+     spec 28=ncl_c2               ---> spec 24=ncl_c1              
+     spec 30=dst_a2           ---> spec 23=dst_a1          
+     spec 30=dst_c2               ---> spec 23=dst_c1              
+     mfrm dgnum, dgnumhi    2.600E-08   5.200E-08
+     mtoo dgnum, dgnumlo    1.100E-07   5.350E-08
+     dp_cut                 7.449E-08
+     dp_xfernone_threshaa   2.600E-08
+     dp_xferall_thresh      1.100E-07
+
+pair  2     mode  1 ---> mode  3     igrow_shrink  1     ixferable_all  0
+     spec 25=num_a1           ---> spec 34=num_a3          
+     spec 25=num_c1               ---> spec 34=num_c3              
+     spec 19=so4_a1           ---> spec 33=so4_a3          
+     spec 19=so4_c1               ---> spec 33=so4_c3              
+     spec 23=dst_a1           ---> spec 31=dst_a3          
+     spec 23=dst_c1               ---> spec 31=dst_c3              
+     spec 24=ncl_a1           ---> spec 32=ncl_a3          
+     spec 24=ncl_c1               ---> spec 32=ncl_c3              
+     mfrm dgnum, dgnumhi    1.100E-07   4.800E-07
+     mtoo dgnum, dgnumlo    9.000E-07   4.000E-07
+     dp_cut                 4.400E-07
+     dp_xfernone_threshaa   1.600E-07
+     dp_xferall_thresh      4.700E-07
+
+pair  3     mode  3 ---> mode  1     igrow_shrink -1     ixferable_all  1
+     spec 34=num_a3           ---> spec 25=num_a1          
+     spec 34=num_c3               ---> spec 25=num_c1              
+     spec 31=dst_a3           ---> spec 23=dst_a1          
+     spec 31=dst_c3               ---> spec 23=dst_c1              
+     spec 32=ncl_a3           ---> spec 24=ncl_a1          
+     spec 32=ncl_c3               ---> spec 24=ncl_c1              
+     spec 33=so4_a3           ---> spec 19=so4_a1          
+     spec 33=so4_c3               ---> spec 19=so4_c1              
+     mfrm dgnum, dgnumlo    9.000E-07   4.000E-07
+     mtoo dgnum, dgnumhi    1.100E-07   4.800E-07
+     dp_cut                 4.400E-07
+     dp_xfernone_threshaa   4.400E-07
+     dp_xferall_thresh      4.100E-07
+ 
+ soil_erod_mod: soil erodibility dataset: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2tunedcam6-2x2-0406201
+ 7.nc
+ soil_erod_mod: soil_erod_fact =   0.700000000000000     
+ (GETFIL): attempting to find local file dst_source2x2tunedcam6-2x2-04062017.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2tunedcam6-2x2-0406201
+ 7.nc
+ aero_model_init: bc_a1            will have drydep applied
+ aero_model_init: bc_a4            will have drydep applied
+ aero_model_init: dst_a1           will have drydep applied
+ aero_model_init: dst_a2           will have drydep applied
+ aero_model_init: dst_a3           will have drydep applied
+ aero_model_init: ncl_a1           will have drydep applied
+ aero_model_init: ncl_a2           will have drydep applied
+ aero_model_init: ncl_a3           will have drydep applied
+ aero_model_init: num_a1           will have drydep applied
+ aero_model_init: num_a2           will have drydep applied
+ aero_model_init: num_a3           will have drydep applied
+ aero_model_init: num_a4           will have drydep applied
+ aero_model_init: pom_a1           will have drydep applied
+ aero_model_init: pom_a4           will have drydep applied
+ aero_model_init: so4_a1           will have drydep applied
+ aero_model_init: so4_a2           will have drydep applied
+ aero_model_init: so4_a3           will have drydep applied
+ aero_model_init: soa_a1           will have drydep applied
+ aero_model_init: soa_a2           will have drydep applied
+ aero_model_init: bc_a1            will have wet removal
+ aero_model_init: bc_a4            will have wet removal
+ aero_model_init: dst_a1           will have wet removal
+ aero_model_init: dst_a2           will have wet removal
+ aero_model_init: dst_a3           will have wet removal
+ aero_model_init: ncl_a1           will have wet removal
+ aero_model_init: ncl_a2           will have wet removal
+ aero_model_init: ncl_a3           will have wet removal
+ aero_model_init: num_a1           will have wet removal
+ aero_model_init: num_a2           will have wet removal
+ aero_model_init: num_a3           will have wet removal
+ aero_model_init: num_a4           will have wet removal
+ aero_model_init: pom_a1           will have wet removal
+ aero_model_init: pom_a4           will have wet removal
+ aero_model_init: so4_a1           will have wet removal
+ aero_model_init: so4_a2           will have wet removal
+ aero_model_init: so4_a3           will have wet removal
+ aero_model_init: soa_a1           will have wet removal
+ aero_model_init: soa_a2           will have wet removal
+ chem_init: addfld done
+ setinv_inti: m,n2,o2,h2o ndx =            1           2           3          -1
+  
+ usrrxt_inti: diagnostics 
+   -1    7   -1   -1   -1   -1   -1   -1   -1   -1
+   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1
+    9   11   -1   -1   -1   -1   -1   -1   -1   -1
+   -1   -1
+ trcdata_init: data type: CYCLICAL file: tracer_cnst_halons_3D_L70_1849-2015_CMI
+ P6ensAvg_c180927.nc
+ (GETFIL): attempting to find local file 
+ tracer_cnst_halons_3D_L70_1849-2015_CMIP6ensAvg_c180927.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/tracer_cnst/tracer_cnst_halons_3D_L70_
+ 1849-2015_CMIP6ensAvg_c180927.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/tracer_cnst/tracer_cnst_halons_3D_L70_
+ 1849-2015_CMIP6ensAvg_c180927.nc
+ trcdata_init: file%has_ps =  T
+ There are no offline tracer sources
+  
+ airpl_src: NO and CO do not have external source --> no aircraft sources will b
+ e applied
+ chemini: after airpl_src on node            0
+ srf_emis_inti: n_emis_files =           22
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_DMS_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_DMS_bb_surface_2000climo_
+ 0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_DMS_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_DMS_other_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_other_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_DMS_other_surface_2000cli
+ mo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_DMS_other_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_other_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_DMS_other_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_anthro-ag-ship-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ag-ship-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SO2_anthro-ag-ship-res_su
+ rface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_anthro-ag-ship-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ag-ship-res_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ag-ship-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_anthro-ene_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ene_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SO2_anthro-ene_surface_20
+ 00climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_anthro-ene_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ene_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_anthro-ene_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SO2_bb_surface_2000climo_
+ 0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SOAGx1.5_anthro_surface_2
+ 000climo_0.9x1.25_c20170608.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SOAGx1.5_bb_surface_2000c
+ limo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_biogenic_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_biogenic_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SOAGx1.5_biogenic_surface
+ _2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SOAGx1.5_biogenic_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_biogenic_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SOAGx1.5_biogenic_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_bc_a4_anthro_surface_2000
+ climo_0.9x1.25_c20170608.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_bc_a4_bb_surface_2000clim
+ o_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_bc_a4_anthro_surface_
+ 2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_bc_a4_bb_surface_2000
+ climo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_bc_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_pom_a4_anthro_surface
+ _2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_pom_a4_bb_surface_2000climo_0.9x1.25_c20170509.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_bb_surface_2000climo_0.9x1.25_c20170509.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_pom_a4_bb_surface_200
+ 0climo_0.9x1.25_c20170509.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_pom_a4_bb_surface_2000climo_0.9x1.25_c20170509.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_bb_surface_2000climo_0.9x1.25_c20170509.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_pom_a4_bb_surface_2000climo_0.9x1.25_c20170509.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.
+ nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_so4_a1_anthro-ag-ship
+ _surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.
+ nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_so4_a1_bb_surface_200
+ 0climo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_so4_a2_anthro-res_sur
+ face_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_pom_a4_anthro_surface_200
+ 0climo_0.9x1.25_c20170608.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_anthro_surface_2000climo_0.9x1.25_c20170608.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_pom_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_pom_a4_bb_surface_2000cli
+ mo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_pom_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_pom_a4_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a1_anthro-ag-ship_sur
+ face_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ag-ship_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a1_bb_surface_2000cli
+ mo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_bb_surface_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a2_anthro-res_surface
+ _2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_anthro-res_surface_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ chemini: after srf_emissions_inti on node            0
+  
+ setext_inti: diagnostics: co_ndx, no_ndx, synoz_ndx, xno_ndx
+   -1   -1   -1   -1
+  
+  
+ extfrc_inti: diagnostics
+  
+ extfrc timing specs
+ type =                                 
+  
+ there are            7  species with external forcing files
+  
+ forcing type            1
+ species = SO2
+ frc ndx =            1
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+  
+ forcing type            2
+ species = num_a1
+ frc ndx =            8
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+  
+ forcing type            3
+ species = num_a2
+ frc ndx =            9
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+  
+ forcing type            4
+ species = num_a1
+ frc ndx =            8
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+  
+ forcing type            5
+ species = so4_a1
+ frc ndx =            2
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+  
+ forcing type            6
+ species = so4_a1
+ frc ndx =            2
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+  
+ forcing type            7
+ species = so4_a2
+ frc ndx =            3
+ filename= 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+  
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_SO2_contvolcano_vertical_
+ 2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_SO2_contvolcano_vertical_2000climo_0.9x1.25_c20170322.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_a1_so4_contvolcano_ve
+ rtical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a1_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: file%has_ps =  T
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_a2_so4_contvolcano_ve
+ rtical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_a2_so4_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: file%has_ps =  T
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_num_so4_a1_anthro-ene_ver
+ tical_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_num_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a1_anthro-ene_vertica
+ l_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_anthro-ene_vertical_2000climo_0.9x1.25_c20170616.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a1_contvolcano_vertic
+ al_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a1_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: file%has_ps =  F
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: data type: CYCLICAL file: /glade/p/cesmdata/cseg/inputdata/atm/ca
+ m/chem/emis/CMIP6_emissions_2000climo/emissions-cmip6_so4_a2_contvolcano_vertic
+ al_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): attempting to find local file 
+ emissions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_2000climo/em
+ issions-cmip6_so4_a2_contvolcano_vertical_2000climo_0.9x1.25_c20170724.nc
+ trcdata_init: file%has_ps =  F
+ chemini: after extfrc_inti on node            0
+ chemini: after sulf_inti on node            0
+ sad_inti: sad capped at level           27
+           whose midpoint is    1.24479498481378       hPa
+ chemini: after sad_inti on node            0
+ chemini: after lightning_inti on node            0
+ drydep_inti: following species have dry deposition
+ drydep_inti: H2O2 is requested to have dry dep
+ drydep_inti: H2SO4 is requested to have dry dep
+ drydep_inti: SO2 is requested to have dry dep
+ drydep_inti:
+ (GETFIL): attempting to find local file atmsrf_ne30pg3_180522.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mam/atmsrf_ne30pg3_180522.nc
+ Creating new decomp: 16!11!4!!48600!11!!d6!i4!                       
+ INFLD_REAL_2D_3D: read field fraction_landuse
+ chemini: after drydep_inti on node            0
+ chemini: after fstrat_inti on node            0
+ (GETFIL): attempting to find local file temp_prs_GT200nm_JPL10_c140624.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/phot/temp_prs_GT200nm_JPL10_c140624.
+ nc
+ jlong_init: before get_rsf
+ (GETFIL): attempting to find local file RSF_GT200nm_v3.0_c080811.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/phot/RSF_GT200nm_v3.0_c080811.nc
+  
+ ----------------------------------------------
+ get_rsf: numalb, numcolo3, numsza, nump =            6          20          24
+         151
+ get_rsf: size of rsf_tab =           67         151          24          20
+           6
+ ----------------------------------------------
+  
+ Jlong using bdes
+ jlong_init: after  get_rsf
+  
+ --------------------------------------------------
+ jlong_init: etfphot after data rebin
+  7.6452903E+11  8.7356009E+11  1.0457383E+12  1.1963335E+12  2.1674947E+12
+  3.2521682E+12  3.7472620E+12  4.4417603E+12  4.7046021E+12  6.1459271E+12
+  4.5805321E+12  5.3736009E+12  4.7231682E+12  5.4521918E+12  4.5247736E+12
+  6.9208876E+12  6.2316474E+12  6.1748373E+12  5.8132723E+12  7.7077464E+12
+  1.3999711E+13  1.2142838E+13  2.8625627E+13  3.2198714E+13  2.5022878E+13
+  2.7868473E+13  2.3342371E+13  3.6406967E+13  6.1832481E+13  7.8053515E+13
+  7.6502612E+13  7.6368909E+13  9.4717466E+13  1.0131700E+14  1.0360695E+14
+  1.1006141E+14  1.0896343E+14  1.1388526E+14  1.3496003E+14  1.5947492E+14
+  1.4990722E+14  1.5192542E+14  1.6000294E+14  1.6984556E+14  1.8779989E+14
+  1.6445225E+14  1.8380561E+14  2.1973892E+14  1.9629563E+14  2.2411328E+14
+  1.8448510E+14  2.0149529E+14  2.0555935E+14  2.4346244E+14  3.5082401E+14
+  3.4524622E+14  3.5756166E+14  3.6631628E+14  3.4984865E+14  3.5575546E+14
+  4.2829781E+14  4.8409829E+14  4.9516417E+14  5.2699945E+14  5.2406787E+14
+  5.0883028E+14  4.8786484E+14
+ --------------------------------------------------
+  
+  
+ *********************************************
+ photo_inti: euv_indexer
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0
+ photo_inti: sht_indexer
+     0
+ photo_inti: lng_indexer
+     1
+ *********************************************
+  
+ (GETFIL): attempting to find local file exo_coldens.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/phot/exo_coldens.nc
+ chemini: after photo_inti on node            0
+ chemini: after aurora_inti
+ chemini: after wetdep_init
+ chemini: finished on node            0
+ boundarydata_read: Reading from: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ggas/noaamisc.r8.nc
+ (GETFIL): attempting to find local file noaamisc.r8.nc
+ (GETFIL): using /glade/p/cesmdata/cseg/inputdata/atm/cam/ggas/noaamisc.r8.nc
+ boundarydata reading data for months:           12           1
+ boundarydata_read: Reading from: 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/phot/xh2o_c080826.nc
+ (GETFIL): attempting to find local file xh2o_c080826.nc
+ (GETFIL): using /glade/p/cesmdata/cseg/inputdata/atm/waccm/phot/xh2o_c080826.nc
+ boundarydata reading data for months:           12           1
+ O1D_to_2OH_adj_init: Found j2oh index in O1D_to_2OH_adj_init of             -1
+ O1D_to_2OH_adj_init: O1D_to_2OH_adj is active
+ init_cfc11star: CFC11STAR is added to pbuf2d for radiation
+ ozone is prescribed in :ozone_strataero_CAM6chem_2000climo_zm_5day_c171004.nc
+ trcdata_init: data type: CYCLICAL file: ozone_strataero_CAM6chem_2000climo_zm_5
+ day_c171004.nc
+ (GETFIL): attempting to find local file 
+ ozone_strataero_CAM6chem_2000climo_zm_5day_c171004.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_strataero_CAM6chem_2000cli
+ mo_zm_5day_c171004.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_strataero_CAM6chem_2000cli
+ mo_zm_5day_c171004.nc
+ trcdata_init: file%has_ps =  T
+ stratospheric aerosol is prescribed in :ozone_strataero_CAM6chem_2000climo_zm_5
+ day_c171004.nc
+ trcdata_init: data type: CYCLICAL file: ozone_strataero_CAM6chem_2000climo_zm_5
+ day_c171004.nc
+ (GETFIL): attempting to find local file 
+ ozone_strataero_CAM6chem_2000climo_zm_5day_c171004.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_strataero_CAM6chem_2000cli
+ mo_zm_5day_c171004.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_strataero_CAM6chem_2000cli
+ mo_zm_5day_c171004.nc
+ trcdata_init: file%has_ps =  T
+  
+ GW_DRAG: band_mid%ngwv =           32
+GW_DRAG: band_mid%cref(-32) =  -80.00
+GW_DRAG: band_mid%cref(-31) =  -77.50
+GW_DRAG: band_mid%cref(-30) =  -75.00
+GW_DRAG: band_mid%cref(-29) =  -72.50
+GW_DRAG: band_mid%cref(-28) =  -70.00
+GW_DRAG: band_mid%cref(-27) =  -67.50
+GW_DRAG: band_mid%cref(-26) =  -65.00
+GW_DRAG: band_mid%cref(-25) =  -62.50
+GW_DRAG: band_mid%cref(-24) =  -60.00
+GW_DRAG: band_mid%cref(-23) =  -57.50
+GW_DRAG: band_mid%cref(-22) =  -55.00
+GW_DRAG: band_mid%cref(-21) =  -52.50
+GW_DRAG: band_mid%cref(-20) =  -50.00
+GW_DRAG: band_mid%cref(-19) =  -47.50
+GW_DRAG: band_mid%cref(-18) =  -45.00
+GW_DRAG: band_mid%cref(-17) =  -42.50
+GW_DRAG: band_mid%cref(-16) =  -40.00
+GW_DRAG: band_mid%cref(-15) =  -37.50
+GW_DRAG: band_mid%cref(-14) =  -35.00
+GW_DRAG: band_mid%cref(-13) =  -32.50
+GW_DRAG: band_mid%cref(-12) =  -30.00
+GW_DRAG: band_mid%cref(-11) =  -27.50
+GW_DRAG: band_mid%cref(-10) =  -25.00
+GW_DRAG: band_mid%cref(-9) =  -22.50
+GW_DRAG: band_mid%cref(-8) =  -20.00
+GW_DRAG: band_mid%cref(-7) =  -17.50
+GW_DRAG: band_mid%cref(-6) =  -15.00
+GW_DRAG: band_mid%cref(-5) =  -12.50
+GW_DRAG: band_mid%cref(-4) =  -10.00
+GW_DRAG: band_mid%cref(-3) =   -7.50
+GW_DRAG: band_mid%cref(-2) =   -5.00
+GW_DRAG: band_mid%cref(-1) =   -2.50
+GW_DRAG: band_mid%cref(0) =    0.00
+GW_DRAG: band_mid%cref(1) =    2.50
+GW_DRAG: band_mid%cref(2) =    5.00
+GW_DRAG: band_mid%cref(3) =    7.50
+GW_DRAG: band_mid%cref(4) =   10.00
+GW_DRAG: band_mid%cref(5) =   12.50
+GW_DRAG: band_mid%cref(6) =   15.00
+GW_DRAG: band_mid%cref(7) =   17.50
+GW_DRAG: band_mid%cref(8) =   20.00
+GW_DRAG: band_mid%cref(9) =   22.50
+GW_DRAG: band_mid%cref(10) =   25.00
+GW_DRAG: band_mid%cref(11) =   27.50
+GW_DRAG: band_mid%cref(12) =   30.00
+GW_DRAG: band_mid%cref(13) =   32.50
+GW_DRAG: band_mid%cref(14) =   35.00
+GW_DRAG: band_mid%cref(15) =   37.50
+GW_DRAG: band_mid%cref(16) =   40.00
+GW_DRAG: band_mid%cref(17) =   42.50
+GW_DRAG: band_mid%cref(18) =   45.00
+GW_DRAG: band_mid%cref(19) =   47.50
+GW_DRAG: band_mid%cref(20) =   50.00
+GW_DRAG: band_mid%cref(21) =   52.50
+GW_DRAG: band_mid%cref(22) =   55.00
+GW_DRAG: band_mid%cref(23) =   57.50
+GW_DRAG: band_mid%cref(24) =   60.00
+GW_DRAG: band_mid%cref(25) =   62.50
+GW_DRAG: band_mid%cref(26) =   65.00
+GW_DRAG: band_mid%cref(27) =   67.50
+GW_DRAG: band_mid%cref(28) =   70.00
+GW_DRAG: band_mid%cref(29) =   72.50
+GW_DRAG: band_mid%cref(30) =   75.00
+GW_DRAG: band_mid%cref(31) =   77.50
+GW_DRAG: band_mid%cref(32) =   80.00
+ GW_DRAG: band_mid%kwv =   6.283185307179586E-005
+ GW_DRAG: band_mid%fcrit2 =    1.00000000000000     
+  
+ GW_DRAG: band_long%ngwv =            0
+GW_DRAG: band_long%cref( 0) =    0.00
+ GW_DRAG: band_long%kwv =   2.094395102393195E-005
+ GW_DRAG: band_long%fcrit2 =    1.00000000000000     
+  
+ gw_init: newtonian damping (1/day):
+ k    pref_edge   alpha   
+   1 0.45005E-03      0.10
+   2 0.74201E-03      0.10
+   3 0.12234E-02      0.10
+   4 0.20170E-02      0.10
+   5 0.33255E-02      0.10
+   6 0.54827E-02      0.11
+   7 0.90398E-02      0.11
+   8 0.14904E-01      0.12
+   9 0.24572E-01      0.13
+  10 0.40513E-01      0.14
+  11 0.66794E-01      0.15
+  12 0.11013E+00      0.17
+  13 0.18156E+00      0.19
+  14 0.29935E+00      0.20
+  15 0.49630E+00      0.22
+  16 0.81507E+00      0.23
+  17 0.13477E+01      0.23
+  18 0.22319E+01      0.22
+  19 0.36797E+01      0.21
+  20 0.60665E+01      0.20
+  21 0.99157E+01      0.19
+  22 0.15739E+02      0.18
+  23 0.23885E+02      0.18
+  24 0.34520E+02      0.19
+  25 0.47513E+02      0.19
+  26 0.63180E+02      0.20
+  27 0.82915E+02      0.19
+  28 0.10827E+03      0.18
+  29 0.14068E+03      0.17
+  30 0.18189E+03      0.15
+  31 0.23398E+03      0.14
+  32 0.29951E+03      0.13
+  33 0.38147E+03      0.12
+  34 0.48344E+03      0.10
+  35 0.60964E+03      0.09
+  36 0.76493E+03      0.09
+  37 0.95501E+03      0.09
+  38 0.11864E+04      0.09
+  39 0.14666E+04      0.09
+  40 0.18038E+04      0.09
+  41 0.22076E+04      0.09
+  42 0.26882E+04      0.09
+  43 0.32573E+04      0.09
+  44 0.39273E+04      0.09
+  45 0.47114E+04      0.09
+  46 0.56240E+04      0.09
+  47 0.66800E+04      0.09
+  48 0.80701E+04      0.09
+  49 0.94941E+04      0.09
+  50 0.11169E+05      0.09
+  51 0.13140E+05      0.09
+  52 0.15459E+05      0.09
+  53 0.18186E+05      0.09
+  54 0.21395E+05      0.09
+  55 0.25170E+05      0.09
+  56 0.29612E+05      0.09
+  57 0.34837E+05      0.09
+  58 0.40984E+05      0.09
+  59 0.48215E+05      0.09
+  60 0.56722E+05      0.09
+  61 0.65233E+05      0.09
+  62 0.73045E+05      0.09
+  63 0.79636E+05      0.09
+  64 0.84535E+05      0.09
+  65 0.87372E+05      0.09
+  66 0.90032E+05      0.09
+  67 0.92496E+05      0.09
+  68 0.94743E+05      0.09
+  69 0.96754E+05      0.09
+  70 0.98511E+05      0.09
+  71 0.10000E+06      0.09
+ KTOP        =           1
+ INFLD_REAL_1D_2D: read field GBXAR
+ Creating new decomp: 16!16!4!!48600!16!!d6!i4!                       
+ INFLD_REAL_2D_3D: read field HWDTH
+ INFLD_REAL_2D_3D: read field CLNGT
+ INFLD_REAL_2D_3D: read field MXDIS
+ INFLD_REAL_2D_3D: read field ANIXY
+ INFLD_REAL_2D_3D: read field ANGLL
+ KFRONT      =          60
+ KBOT_FRONT  =          58
+  
+ gw_init: gw spectrum taubgnd, effgw_cm =   1.250000000000000E-003
+   1.00000000000000     
+  
+ Beres deep level =          61
+ (GETFIL): attempting to find local file newmfspectra40_dc25.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/gw/newmfspectra40_dc25.nc
+ Read in source spectra from file.
+ mfcc max, min =    243485000.000000      ,   3.111130000000000E-004
+ Initializing vertical diffusion (vertical_diffusion_init)
+ ubc_init: after tgcm_ubc_inti
+ ubc_init: after snoe_inti
+ ubc_init: after msis_ubc_inti
+NBOT_MOLEC = 24
+NTOP_EDDY  =  1     NBOT_EDDY  = 70
+ Using Beljaars SGO drag module
+ radlw_init: ntoplw =          15
+ (GETFIL): attempting to find local file 
+ F_nwvl200_mu20_lam50_res64_t298_c080428.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t
+ 298_c080428.nc
+  reading liquid cloud optics from file 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t
+ 298_c080428.nc                                                                 
+                                                                                
+                    
+ (GETFIL): attempting to find local file iceoptics_c080917.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/iceoptics_c080917.nc
+  reading ice cloud optics from file 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/iceoptics_c080917.nc        
+                                                                                
+                                                                                
+                    
+ (GETFIL): attempting to find local file water_refindex_rrtmg_c080910.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910
+ .nc
+ modal_aer_opt_init: read water refractive index file:
+ /glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910
+ .nc
+ RADHEAT_INIT: pref_mid  5.960300031304655E-004  9.826900182474674E-004
+  1.620185052786383E-003  2.671225107775399E-003  4.404100018007284E-003
+  7.261274781455995E-003  1.197190009349924E-002  1.973800038967966E-002
+  3.254225049431625E-002  5.365325108641628E-002  8.846024854847201E-002
+  0.145845746146733       0.240457495692681       0.397824987885542     
+  0.655682561045978        1.08138256109669        1.78979998963769     
+   2.95577501674416        4.87307497678557        7.99107510829344     
+   12.8273248265032        19.8119996639434        29.2025004455354     
+   41.0167500376701        55.3469988517463        73.0479980120435     
+   95.5947500187904        124.479498481378        161.284999921918     
+   207.932497141883        266.742496751249        340.487505309284     
+   432.457495480776        546.539993956685        687.285000458360     
+   859.972508624196        1070.70500962436        1326.47501304746     
+   1635.17505861819        2005.67506253719        2447.89998978376     
+   2972.79991209507        3592.32500195503        4319.37500834465     
+   5167.74989664555        6152.04982459545        7375.09578466415     
+   8782.12302923203        10331.7126631737        12154.7240763903     
+   14299.4038760662        16822.5079774857        19790.8086702228     
+   23282.8618958592        27391.0816758871        32224.1902351379     
+   37910.0903868675        44599.2574095726        52468.7174707651     
+   60977.8694808483        69138.9430314302        76340.4481112957     
+   82085.8368650079        85953.4766525030        88702.0248919725     
+   91264.4546944648        93619.8398470879        95748.5479535535     
+   97632.5407391414        99255.6095123291     
+ RADHEAT_INIT: QRS_WT   0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  1.266679948174054E-002
+  8.024069402836610E-002  0.253706478658421       0.556641708442076     
+  0.896357084643809        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000     
+ RADHEAT_INIT: QRL_WT   0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000  0.000000000000000E+000  1.266679948174054E-002
+  8.024069402836610E-002  0.253706478658421       0.556641708442076     
+  0.896357084643809        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000        1.00000000000000     
+   1.00000000000000        1.00000000000000     
+ WACCM Heating is computed (true/false):  T
+ NLTE data ozone merge range is           23          26
+ NLTE data ozone merge weights are   0.186033861532330     
+  0.336553477440787       0.538431150850383       0.781758675910773     
+nlte_fomichev_init: apply_co2_limit:        F
+nlte_fomichev_init: check CO2 mixing ratios above 1-mbar level:     28 124.479    
+ trcdata_init: data type: FIXED file: SCWACCM_forcing_WACCM6_zm_5day_L70_1975-20
+ 14_c191121.nc
+ (GETFIL): attempting to find local file 
+ SCWACCM_forcing_WACCM6_zm_5day_L70_1975-2014_c191121.nc
+ (GETFIL): using 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/waccm_forcing/SCWACCM_forcing_WACCM6
+ _zm_5day_L70_1975-2014_c191121.nc
+ open_trc_datafile: 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/waccm_forcing/SCWACCM_forcing_WACCM6
+ _zm_5day_L70_1975-2014_c191121.nc
+ trcdata_init: file%has_ps =  T
+ NLTE constituents are obtained from boundary dataset
+ tuning parameters cldfrc_init: inversion_cld_off F
+ tuning parameters cldfrc_init: dp1  0.100000000000000      dp2
+   500.000000000000      sh1  4.000000000000000E-002 sh2   500.000000000000     
+ tuning parameters cldfrc_init: rhminl  0.950000000000000      rhminl_adj_land
+  0.000000000000000E+000 rhminh  0.800000000000000      premit
+   75000.0000000000      premib   70000.0000000000     
+ tuning parameters cldfrc_init: iceopt           5 icecrit
+  0.930000000000000     
+ cldfrc_init: model level nearest 700 mb is          34 which is
+   546.539993956685      pascals
+ cldfrc2m parameters:
+   rhminl            =   0.950000000000000     
+   rhminl_adj_land   =   0.000000000000000E+000
+   rhminh            =   0.800000000000000     
+   premit            =    75000.0000000000     
+   premib            =    70000.0000000000     
+   iceopt            =            5
+   icecrit           =   0.930000000000000     
+   rhmini            =   0.800000000000000     
+   rhmaxi            =    1.00000000000000     
+   rhminis           =    1.00000000000000     
+   rhmaxis           =    1.00000000000000     
+   do_subgrid_growth =  T
+ convect_deep initializing Zhang-McFarlane convection
+ ZM_CONV_INIT: Deep convection will be capped at intfc           44  which is 
+   3927.30012536049       pascals
+ tuning parameters zm_convi: tau   3600.00000000000     
+ tuning parameters zm_convi: c0_lnd  7.500000000000000E-003 , c0_ocn
+  3.000000000000000E-002
+ tuning parameters zm_convi: num_cin           1
+ tuning parameters zm_convi: ke  5.000000000000000E-006
+ tuning parameters zm_convi: no_deep_pbl F
+ **** ZM: DILUTE Buoyancy Calculation ****
+ nucleate_ice parameters:
+   mincld                     =   1.000000000000000E-004
+   bulk_scale                 =    2.00000000000000     
+   use_preexisiting_ice       =  T
+   hist_preexisiting_ice      =  F
+   nucleate_ice_subgrid       =    1.20000000000000     
+   nucleate_ice_subgrid_strat =    1.20000000000000     
+   nucleate_ice_strat         =    1.00000000000000     
+   nucleate_ice_incloud       =  F
+   nucleate_ice_use_troplev   =  T
+Initializing MG version  2. 0
+ Number of microphysics substeps is:            1
+ C1                           =    1.00000000000000     
+ C1b                          =    1.00000000000000     
+ C1c                          =    1.00000000000000     
+ C2                           =    1.30000000000000     
+ C2b                          =    1.30000000000000     
+ C2c                          =    5.00000000000000     
+ C2rt                         =    1.00000000000000     
+ C2thl                        =    1.00000000000000     
+ C2rtthl                      =    1.30000000000000     
+ C4                           =    5.20000000000000     
+ C5                           =   0.300000000000000     
+ C6rt                         =    4.00000000000000     
+ C6rtb                        =    6.00000000000000     
+ C6rtc                        =    1.00000000000000     
+ C6thl                        =    4.00000000000000     
+ C6thlb                       =    6.00000000000000     
+ C6thlc                       =    1.00000000000000     
+ C7                           =   0.500000000000000     
+ C7b                          =   0.500000000000000     
+ C7c                          =   0.500000000000000     
+ C8                           =    4.20000000000000     
+ C8b                          =   0.000000000000000E+000
+ C10                          =    3.30000000000000     
+ C11                          =   0.700000000000000     
+ C11b                         =   0.350000000000000     
+ C11c                         =   0.500000000000000     
+ C12                          =    1.00000000000000     
+ C13                          =   0.100000000000000     
+ C14                          =    1.60000000000000     
+ C15                          =   0.400000000000000     
+ C_wp2_splat                  =   0.000000000000000E+000
+ C6rt_Lscale0                 =    14.0000000000000     
+ C6thl_Lscale0                =    14.0000000000000     
+ C7_Lscale0                   =   0.850000000000000     
+ wpxp_L_thresh                =    60.0000000000000     
+ c_K                          =   0.200000000000000     
+ c_K1                         =   0.750000000000000     
+ nu1                          =    20.0000000000000     
+ c_K2                         =   0.125000000000000     
+ nu2                          =    5.00000000000000     
+ c_K6                         =   0.375000000000000     
+ nu6                          =    5.00000000000000     
+ c_K8                         =    1.25000000000000     
+ nu8                          =    20.0000000000000     
+ c_K9                         =   0.250000000000000     
+ nu9                          =    20.0000000000000     
+ nu10                         =   0.000000000000000E+000
+ c_K_hm                       =   0.750000000000000     
+ c_K_hmb                      =   0.100000000000000     
+ K_hm_min_coef                =   0.100000000000000     
+ nu_hm                        =    1.50000000000000     
+ slope_coef_spread_DG_means_w =    21.0000000000000     
+ pdf_component_stdev_factor_w =    6.50000000000000     
+ coef_spread_DG_means_rt      =   0.800000000000000     
+ coef_spread_DG_means_thl     =   0.800000000000000     
+ gamma_coef                   =   0.270000000000000     
+ gamma_coefb                  =   0.320000000000000     
+ gamma_coefc                  =    5.00000000000000     
+ mu                           =   1.000000000000000E-003
+ beta                         =    2.40000000000000     
+ lmin_coef                    =   0.100000000000000     
+ omicron                      =   0.800000000000000     
+ zeta_vrnce_rat               =   0.000000000000000E+000
+ upsilon_precip_frac_rat      =   0.900000000000000     
+ lambda0_stability_coef       =   4.000000000000000E-002
+ mult_coef                    =    1.00000000000000     
+ taumin                       =    90.0000000000000     
+ taumax                       =    3600.00000000000     
+ Lscale_mu_coef               =    2.00000000000000     
+ Lscale_pert_coef             =   0.100000000000000     
+ alpha_corr                   =   0.150000000000000     
+ Skw_denom_coef               =   0.000000000000000E+000
+ c_K10                        =   0.500000000000000     
+ c_K10h                       =   0.300000000000000     
+ thlp2_rad_coef               =    1.00000000000000     
+ thlp2_rad_cloud_frac_thresh  =   0.100000000000000     
+ up2_vp2_factor               =    2.00000000000000     
+ Skw_max_mag                  =    4.50000000000000     
+ C_invrs_tau_bkgnd            =    1.00000000000000     
+ C_invrs_tau_sfc              =   0.100000000000000     
+ C_invrs_tau_shear            =   2.000000000000000E-002
+ C_invrs_tau_N2               =   0.100000000000000     
+ C_invrs_tau_N2_wp2           =   0.200000000000000     
+ C_invrs_tau_N2_xp2           =   0.200000000000000     
+ C_invrs_tau_N2_wpxp          =   0.000000000000000E+000
+ C_invrs_tau_N2_clear_wp3     =   0.000000000000000E+000
+ l_use_precip_frac =  T
+ l_predict_upwp_vpwp =  F
+ l_min_wp2_from_corr_wx =  F
+ l_min_xp2_from_corr_wx =  F
+ l_C2_cloud_frac =  F
+ l_diffuse_rtm_and_thlm =  F
+ l_stability_correct_Kh_N2_zm =  F
+ l_calc_thlp2_rad =  T
+ l_upwind_wpxp_ta =  F
+ l_upwind_xpyp_ta =  T
+ l_upwind_xm_ma =  T
+ l_uv_nudge =  F
+ l_rtm_nudge =  F
+ l_tke_aniso =  T
+ l_vert_avg_closure =  T
+ l_trapezoidal_rule_zt =  T
+ l_trapezoidal_rule_zm =  T
+ l_call_pdf_closure_twice =  T
+ l_standard_term_ta =  F
+ l_use_cloud_cover =  T
+ l_diagnose_correlations =  F
+ l_calc_w_corr =  F
+ l_const_Nc_in_cloud =  F
+ l_fix_w_chi_eta_correlations =  T
+ l_stability_correct_tau_zm =  T
+ l_damp_wp2_using_em =  F
+ l_do_expldiff_rtm_thlm =  T
+ l_Lscale_plume_centered =  F
+ l_diag_Lscale_from_tau =  F
+ l_use_ice_latent =  F
+ l_use_C7_Richardson =  F
+ l_use_C11_Richardson =  F
+ l_brunt_vaisala_freq_moist =  F
+ l_use_thvm_in_bv_freq =  F
+ l_rcm_supersat_adj =  F
+ l_single_C2_Skw =  F
+ l_damp_wp3_Skw_squared =  F
+ l_prescribed_avg_deltaz =  F
+ l_update_pressure =  F
+ INIT_HB_DIFF: PBL height will be limited to bottom           13 
+  model levels. Top is    44599.2574095726       pascals
+ qbo_init: successfully opened 
+ /glade/p/cesmdata/cseg/inputdata/atm/waccm/qbo/qbocoefficients_c151023.nc
+ has_monthly_data= F
+ qbo_init: p_inp   3.00000000000000        4.00000000000000     
+   5.00000000000000        6.00000000000000        8.00000000000000     
+   10.0000000000000        12.0000000000000        15.0000000000000     
+   20.0000000000000        25.0000000000000        30.0000000000000     
+   35.0000000000000        40.0000000000000        45.0000000000000     
+   50.0000000000000        60.0000000000000        70.0000000000000     
+   80.0000000000000        90.0000000000000     
+ qbo_init: ktop =           32   3.40487505309284     
+ qbo_init: kbot =           48   87.8212302923203     
+ qbo_init: fcos_qbo -8.538927546110600E-002 -0.109273335690008     
+ -0.124661030486213      -0.146817940465400      -0.178698368778821     
+ -0.138341858883331       8.923699998400084E-002  0.308141296691434     
+  0.520141966559073       0.150071036683568      -0.216803884816744     
+ -0.606216178084370      -0.459990624639461       0.294278251414409     
+  0.425415631713425       0.460069533217192       0.271346376164794     
+ qbo_init: get_curr_date =            1           1           1           0
+ qbo_init: cday =    366.000000000000     
+ qbo_init: cday =    366.000000000000     
+ ERROR: Attempt to find undefined name in pbuf UZM
