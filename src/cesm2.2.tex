@@ -198,6 +198,14 @@
 \subsubsection{Tuning of viscosity coefficients}
 Held-Suarez topo
 \subsection{Sponge layer damping for middle atmosphere models}
+\subsection{PGF}
+%
+%https://github.com/E3SM-Project/E3SM/compare/master...mt5555:preqx-exner
+%
+%Mark: potential temperature in the thermodynamic equation does not make a difference.
+%
+%Biggest impact is Exner pressure in PGF
+%Next is reference dp and T for viscosity
 
 \subsection{Smoothing topography for variable resolution applications}
 \subsection{Vertical remapping}
@@ -206,7 +214,7 @@ Held-Suarez topo
 \item this consistency is important (e.g. isothermal profile will not remain isothermal if water species are mapped with a method different than temperature)
 \item non-water tracers are advected with exactly linear and shape-preserving scheme as in CESM2.0.
 \end{itemize}
-\subsection{Code stuff}
+\subsection{Code stuff: generalized thermodynamic code}
 \begin{itemize}
 \item utils/physconst.F90: unify new code for {\em{kmvis}} and {\em{kmcnd}} for WACCM-x. Similarly for heat capacity and R.
 \end{itemize}
@@ -232,7 +240,8 @@ Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosp
 
 \begin{itemize}
 \item verb+FWsc2000+ (41 tracers): SYPD = 4.825 (ne30) and SYPD = 5.763 (ne30pg3); 1 month test with interpolated monthly output.=> 19% faster
-\item verb+FW2000+ (201 tracers): SYPD =  1.171 (ne30) and SYPD = 1.655 (ne30pg3); 5 day run => 40% faster
+\item verb+FW2000+ (201 tracers): SYPD =  1.171 (ne30) and SYPD = 1.655 (ne30pg3); 5 day run => 40% faster [verify these numbers!]
+\item verb+FW2000+ (201 tracers), CONUS: 11-12 days in 12 hours using 5400 PEs
 \begin{verbatim}
                          ne30      ne30pg3
 prim_advec_tracers_fvm             358.263
