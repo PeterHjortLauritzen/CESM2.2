@@ -207,13 +207,18 @@ Held-Suarez topo
 %Biggest impact is Exner pressure in PGF
 %Next is reference dp and T for viscosity
 
-\subsection{Smoothing topography for variable resolution applications}
 \subsection{Vertical remapping}
 \begin{itemize}
 \item water species, momentum and temperature are mapped using same method
 \item this consistency is important (e.g. isothermal profile will not remain isothermal if water species are mapped with a method different than temperature)
 \item non-water tracers are advected with exactly linear and shape-preserving scheme as in CESM2.0.
 \end{itemize}
+\subsection{Support for variable-resolution grids}
+There have been many studies using CESM in a variable-resolution configuration with the CAM-SE dynamical core. These studies were performed in collaboration with variable-resolution specialists whose time and resources are limited and cannot be available to the broader community. CESM2.2 provides functional support for three variable-resolution grids in CAM-SE that can be easily configured and ran by any user. The ARCTIC, ARCTICGRIS and CONUS grids are depicted in Figure~X. The ARCTIC grid has uniform base resolution of $1^{\circ}$ with $\frac{1}{4}^{\circ}$ refinement over the broader Arctic. The ARCTICGRIS grid is identical to the ARCTIC grid but contains an $\frac{1}{8}^{\circ}$ patch over Greenland. The CONUS grid consists of $1^{\circ}$ base resolution with $\frac{1}{8}^{\circ}$ refinement of the contiguous U.S. The CONUS grid has been previously published in XX, and has also appeared in the debut of MUSICA.
+
+The difficulty with variable-resolution grids is that the magnitude of numerical errors vary over the grid, dictated by the local elements dimensions. In CESM2.2 the necessary adjustments have been automated in a way that the average user need not concern themselves with this additional complexity. These complexities refer to configuring scale-aware hyper-viscosity and variable smoothing of the topography boundary conditions.
+\subsubsection{Scale-aware tensor hyper-viscosity}
+\subsubsection{Smoothing topography for variable resolution applications}
 \subsection{Code stuff: generalized thermodynamic code}
 \begin{itemize}
 \item utils/physconst.F90: unify new code for {\em{kmvis}} and {\em{kmcnd}} for WACCM-x. Similarly for heat capacity and R.
