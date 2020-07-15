@@ -213,12 +213,19 @@ Held-Suarez topo
 \item this consistency is important (e.g. isothermal profile will not remain isothermal if water species are mapped with a method different than temperature)
 \item non-water tracers are advected with exactly linear and shape-preserving scheme as in CESM2.0.
 \end{itemize}
-\subsection{Support for variable-resolution grids}
-There have been many studies using CESM in a variable-resolution configuration with the CAM-SE dynamical core. These studies were performed in collaboration with variable-resolution specialists whose time and resources are limited and cannot be available to the broader community. CESM2.2 provides functional support for three variable-resolution grids in CAM-SE that can be easily configured and ran by any user. The ARCTIC, ARCTICGRIS and CONUS grids are depicted in Figure~X. The ARCTIC grid has uniform base resolution of $1^{\circ}$ with $\frac{1}{4}^{\circ}$ refinement over the broader Arctic. The ARCTICGRIS grid is identical to the ARCTIC grid but contains an $\frac{1}{8}^{\circ}$ patch over Greenland. The CONUS grid consists of $1^{\circ}$ base resolution with $\frac{1}{8}^{\circ}$ refinement of the contiguous U.S. The CONUS grid has been previously published in XX, and has also appeared in the debut of MUSICA.
+\subsection{Smoothing topography for variable resolution applications}
+The topography boundary condition for variable resolution grids need to be smoothed in a way as to not excite grid-scale features, while also preserving the topographic steepness permitted in the refined regions. That is, the amount of smoothing applied to the raw elevation dataset should be larger for the coarse regions than in the refined regions. The NCAR global model topography generation software \cite{LetAl2015GMD} has been updated to include differential smoothing that depends on the local spectral-element area, described here. 
 
-The difficulty with variable-resolution grids is that the magnitude of numerical errors vary over the grid, dictated by the local elements dimensions. In CESM2.2 the necessary adjustments have been automated in a way that the average user need not concern themselves with this additional complexity. These complexities refer to configuring scale-aware hyper-viscosity and variable smoothing of the topography boundary conditions.
-\subsubsection{Scale-aware tensor hyper-viscosity}
-\subsubsection{Smoothing topography for variable resolution applications}
+The topography software uses a two step process to generate the topography for a given target grid. It first takes a global high-resolution (1km) elevation dataset and maps the elevations to an unstructured cubed-sphere grid with a 3km horizontal resolution. This step is no different whether a uniform or variable-resolution grid. The second step smoothes the elevations on the 3km grid and then maps the smoothed field to the target grid. The radius of the smoothing kernel is a free parameter that needs to be adjusted depending on the target grid resolution. CESM uses a smoothing radius of about twice the grid spacing of the target grid. For example, a uniform resolution $1^{\circ}$ grid uses a 60 point radius on the 3km cubed-sphere grid. For variable resolution grids, a refinement factor is defined on the target grid, and mapped to the 3km cubed-sphere grid to inform the smoothing radius. Arriving at a refinement factor on the 3km cubed-sphere is a four step process:
+\begin{itemize}
+\item Compute the element area $A_{elem}$ on the computational grid.
+\item Use this area to define a refinement factor on the computational grid $\sqrt{\frac{MAX(A_{elem})}{A_{elem}}}$.
+\item Remap the refinement factor to the 3km cubed-sphere, $rrfac_{cube}$.
+\item Apply limiter to $rrfac_{cube}$ to ensure it is 1.0 everywhere in the coarse region, and that it does not exceed a threshold $rrfac_{max}$ in the refined region.
+\end{itemize}
+
+The smoothing radius $R$ applied to variable resolution grids varies over the grid by setting it to $R=\frac{R_{0}}{rrfac_{cube}}$, where $R_0$ is the smoothing radius used in the coarse region.
+
 \subsection{Code stuff: generalized thermodynamic code}
 \begin{itemize}
 \item utils/physconst.F90: unify new code for {\em{kmvis}} and {\em{kmcnd}} for WACCM-x. Similarly for heat capacity and R.
@@ -227,6 +234,8 @@ The difficulty with variable-resolution grids is that the magnitude of numerical
 \subsection{CAM}
 [what CAM results should we show]
 \subsection{Support for CONUS and Arctic variable resolution grids}
+There are many studies using CESM in a variable-resolution configuration (VR-CESM) with the CAM-SE dynamical core. These studies were performed in collaboration with variable-resolution specialists whose time and resources are limited and not available to the broader community. CESM2.2 provides functional support for three variable-resolution grids in CAM-SE that is easily configured and can be ran by any user. These are the ARCTIC, ARCTICGRIS and CONUS grids depicted in Figure~X. The ARCTIC grid has uniform base resolution of $1^{\circ}$ with $\frac{1}{4}^{\circ}$ refinement over the broader Arctic. The ARCTICGRIS grid is identical to the ARCTIC grid but contains an additional $\frac{1}{8}^{\circ}$ refined patch over Greenland. The CONUS grid has a $1^{\circ}$ base resolution with $\frac{1}{8}^{\circ}$ refinement covering the contiguous U.S. An earlier iteration of the CONUS grid has been described in a prior study \cite{GetAl2017JAMES}. The CONUS grid described here is central to the debut of the Mulit-Scale Infrastructure for Chemistry and Aerosols for use in atmospheric chemistry studies \cite{MUSICA2020}.
+
 \subsection{WACCM QBO}
 Quasi-biennial Oscillation (QBO) is a prominent feature of the tropical stratosphere. The QBO is very difficult to represent in GCMs, for example, only 3 out of 27 CMIP5 models had an internally generated QBO. Necessary processes to simulate accurately for a successful simulation of the QBO is resolved Kelvin and mixed-Rossby gravity waves and small-scale gravity waves (which are parameterized in WACCM: Beres et al. 2002, Richter et al. 2010). To achieve this adequate vertical resolution is necessary. The finite-volume dynamical core with 110 vertical levels has successfully simulated the QBO [ref].
 
