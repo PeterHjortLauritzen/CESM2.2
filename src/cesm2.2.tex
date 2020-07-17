@@ -221,10 +221,11 @@ The topography software uses a two step process to generate the topography for a
 \item Compute the element area $A_{elem}$ on the computational grid.
 \item Use this area to define a refinement factor on the computational grid $\sqrt{\frac{MAX(A_{elem})}{A_{elem}}}$.
 \item Remap the refinement factor to the 3km cubed-sphere, $rrfac_{cube}$.
-\item Apply limiter to $rrfac_{cube}$ to ensure it is 1.0 everywhere in the coarse region, and that it does not exceed a threshold $rrfac_{max}$ in the refined region.
+\item Smooth $rrfac_{cube}$ using a kernel radius 4 times that used to smooth terrain in the coarse regions.
+\item Round $rrfac_{cube}$ to the nearest integer, and limit values to be no larger than $rrfac_{max}$.
 \end{itemize}
 
-The smoothing radius $R$ applied to variable resolution grids varies over the grid by setting it to $R=\frac{R_{0}}{rrfac_{cube}}$, where $R_0$ is the smoothing radius used in the coarse region.
+The smoothing radius $R$ applied to the terrain in variable resolution grids varies over the grid by setting it to $R=\frac{R_{0}}{rrfac_{cube}}$, where $R_0$ is the smoothing radius used in the coarse region.
 
 \subsection{Code stuff: generalized thermodynamic code}
 \begin{itemize}
