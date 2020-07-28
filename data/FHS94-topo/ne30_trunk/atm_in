@@ -1,0 +1,97 @@
+&air_composition_nl
+ dry_air_species		= ''
+ water_species_in_air		= 'Q'
+/
+&analytic_ic_nl
+ analytic_ic_type		= 'us_standard_atmosphere'
+/
+&cam_history_nl
+ fincl1		= 'PS', 'T', 'Z3', 'U', 'V', 'OMEGA', 'PHIS', 'OMEGA500', 'OMEGA850', 'PSL', 'PHIS', 'FT', 'FU', 'FV',
+         'TT_LW', 'TT_MD', 'TT_HI', 'TTRMD', 'TT_UN'
+ fincl2		= 'U:I','V:I','T:I'
+ interpolate_nlat		= 192,192,192
+ interpolate_nlon		= 288,288,288
+ interpolate_output		= .true.,.true.,.false.,.false.
+ nhtfrq		= 0,0,0,-24
+/
+&cam_initfiles_nl
+ bnd_topo		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/topo/se/ne30np4_nc3000_Co060_Fi001_PF_nullRR_Nsw042_20171020.nc'
+ ncdata		= '/glade/p/cesmdata/cseg/inputdata/atm/waccm/ic/FW2000_ne30_L70_01-01-0001_c200602.nc'
+ pertlim		=  1.0D-5 
+ use_topo_file		= .true.
+/
+&dyn_se_inparm
+ se_ftype		=  2 
+ se_fv_nphys		= 0
+ se_fvm_supercycling		= -1
+ se_fvm_supercycling_jet		= -1
+ se_horz_num_threads		=  0 
+ se_hypervis_dynamic_ref_state		=  .false.  
+ se_hypervis_subcycle		= 1
+ se_hypervis_subcycle_q		= 1                 
+ se_hypervis_subcycle_sponge		=  1  
+ se_kmax_jet		= -1
+ se_kmin_jet		= -1
+ se_large_courant_incr		=  .true.  
+ se_lcp_moist		=  .true.  
+ se_limiter_option		=  8 
+ se_molecular_diff		= 100.0
+ se_ne		= 30
+ se_nsplit		= 5
+ se_nu		= -1
+ se_nu_div		=  -1 
+ se_nu_p		= -1 
+ se_nu_top		= 0.0
+ se_phys_dyn_cp		= 1
+ se_qsplit		=  1 
+ se_rayk0		=   2    
+ se_raykrange		=   0.5  
+ se_raytau0		=   0.0 
+ se_refined_mesh		=  .false. 
+ se_rsplit		= 4
+ se_statediag_numtrac		= 3
+ se_statefreq		= 256
+ se_tracer_num_threads		=  0 
+ se_tstep_type		=  4 
+ se_vert_num_threads		=  0 
+ se_vert_remap_t		= 'thermal_energy_over_P'
+ se_vert_remap_tracer_alg		= 'PPM_bc_linear_extrapolation'
+ se_vert_remap_uvtq_alg		= 'FV3_CS'
+/
+&phys_ctl_nl
+ cam_chempkg		= 'none'
+ cam_physpkg		= 'held_suarez'
+ cam_snapshot_after_num		=    -1 
+ cam_snapshot_before_num		=   -1 
+ deep_scheme		= 'NONE'
+ do_clubb_sgs		=  .false. 
+ eddy_scheme		= 'NONE'
+ history_aero_optics		=           .false.  
+ history_aerosol		=               .false.  
+ history_amwg		=                  .true.   
+ history_budget		=                .false.  
+ history_chemistry		=             .true.   
+ history_chemspecies_srf		=       .true.   
+ history_clubb		=                 .true.   
+ history_dust		=                  .false.  
+ history_eddy		=                  .false.  
+ history_vdiag		=                 .false.  
+ history_waccm		=                 .false.  
+ history_waccmx		=                .false.  
+ macrop_scheme		= 'none'
+ microp_scheme		= 'NONE'
+ radiation_scheme		= 'none'
+ shallow_scheme		= 'NONE'
+ srf_flux_avg		= 0
+ use_gw_convect_dp		= .false.
+ use_gw_front		= .false.
+ use_simple_phys		= .true.
+ use_subcol_microp		= .false.
+ waccmx_opt		= 'off'
+/
+&qneg_nl
+ print_qneg_warn		= 'summary'
+/
+&test_tracers_nl
+ test_tracer_num		= 5
+/
