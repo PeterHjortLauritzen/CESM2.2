@@ -98,7 +98,7 @@
 
 % Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
 % Author\affil{3,4}\thanks{Also funded by Monsanto.}}
-\authors{Peter H. Lauritzen\affil{1}\thanks{1850 Table Mesa Drive, Boulder, Colorado, USA}, and Adam R. Herrington \affil{1}}
+\authors{Peter H. Lauritzen\affil{1}\thanks{1850 Table Mesa Drive, Boulder, Colorado, USA}, and Adam R. Herrington\affil{1}, Han-Li Liu\affil{1}}
 
  \affiliation{1}{National Center for Atmospheric Research, Boulder, Colorado, USA}
 
@@ -193,13 +193,71 @@
 % lowercase letter or number. Examples of good headings are:
 
 \section{Numerical improvements to CAM-SE}
-[explain how analytic_ic works with us_stand_atm; overwrite of tracers not water species]
+[explain how analytic\_ic works with us\_stand\_atm; overwrite of tracers not water species]
 \subsection{Improving flow of topography}
 \subsubsection{Reference profiles for viscosity}
 \subsubsection{Tuning of viscosity coefficients}
-Held-Suarez topo
+[Held-Suarez topo]
 \subsection{Sponge layer damping for middle atmosphere models}
-\subsection{PGF}
+\subsubsection{Traditional sponge layer formulation}
+\subsubsection{Molecular viscosity}
+The 2D equation for molecular viscosity is
+\begin{equation}
+    \frac{du}{dt}=\frac{1}{\rho}\nabla_z \left( kmvis \nabla_z u\right),
+\end{equation}
+where $kmvis$ is dynamic viscosity coefficient which dependends on temperature and the composition of dry air [hanli: do you have a reference] (defined in CAM subroutine \verb+src/utils/physconst.F90+). Assuming a fixed trospheric composition of air then $kmvis$ is given by
+\begin{equation}
+..
+\end{equation}
+\begin{figure}
+\noindent\includegraphics[width=\textwidth]{figs/sponge.pdf}
+\caption{}
+\end{figure}
+
+
+The chain rule to convert to pressure coordinates is
+\begin{equation}
+    \nabla_p u=\nabla_z u +\left( \frac{\partial p}{\partial z}\right) \left( \nabla_p z\right)\left(\frac{\partial u}{\partial p}\right),
+\end{equation}
+Using the hydrostatic relation
+\begin{equation}
+    \frac{\partial p}{\partial z}=-\rho g,
+\end{equation}
+we get
+\begin{equation}\label{eq:nablaz}
+   \nabla_z u= \nabla_p u+\rho \nabla_p \Phi  \left(\frac{\partial u}{\partial p}\right).
+\end{equation}
+Maybe the second term on the right-hand side of (\ref{eq:nablaz}) is very small compared to the first term?
+\subsection{Vertical}
+The molecular diffusion equation for momentum components in the vertical is
+\begin{equation}
+    \frac{du}{dt}=\frac{1}{\rho}\frac{d}{dz}\left( kmvis \frac{du}{dz}\right).
+\end{equation}
+Changing to pressure coordinates yields
+\begin{equation}
+    \frac{du}{dt}=g^2\frac{d}{dp}\left( kmvis \, \rho\frac{du}{dp}\right).
+\end{equation}
+This means that the viscosity coefficient ($\nu$) used in the dynamical core is $g^2 \, kmvis \, \rho$.
+\section{Thermal conductivity}
+Similar to molecular viscosity except for $c_p$ term in equations
+\begin{equation}
+    \frac{d}{dt}\left( c_pT\right)=\frac{1}{\rho}\nabla_z \left( kmcnd \nabla_z T\right),
+\end{equation}
+and
+\begin{equation}
+    \frac{d}{dt}\left( c_pT\right)=\frac{1}{\rho}\frac{d}{dz}\left( kmcnd \frac{dT}{dz}\right).
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Pressure gradient force (PGF)}
+The pressure gradient force discretization in CESM2.0 was based on the 
+\begin{equation}
+\nabla_{\eta^{(d)}} \Phi + \frac{1}{\rho} \nabla_{\eta^{(d)}} p,
+\end{equation}
+where $p$ is pressure, $\rho$ is density and $\Phi$ the geopotential. Significant reduction in the amount of grid-scale noise (in particular at element edges) in vertical down and updrafts near steep terrain can be achieved by switching to an Exner pressure formulation of the PGF ...
+
+
+
 %
 %https://github.com/E3SM-Project/E3SM/compare/master...mt5555:preqx-exner
 %
