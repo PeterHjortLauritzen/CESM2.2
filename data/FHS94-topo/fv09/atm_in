@@ -1,0 +1,72 @@
+&air_composition_nl
+ dry_air_species		= ''
+ water_species_in_air		= 'Q'
+/
+&analytic_ic_nl
+ analytic_ic_type		= 'us_standard_atmosphere'
+/
+&cam_history_nl
+ fincl1		= 'PS', 'T', 'Z3', 'U', 'V', 'OMEGA', 'PHIS', 'OMEGA500', 'OMEGA850', 'PSL', 'PHIS', 'TT_LW', 'TT_MD',
+         'TT_HI', 'TTRMD', 'TT_UN'
+ fincl2		= 'U:I','V:I','T:I'
+ nhtfrq		= 0,0,0,-24
+/
+&cam_initfiles_nl
+ bnd_topo		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/topo/fv_0.9x1.25_nc3000_Nsw042_Nrs008_Co060_Fi001_ZR_sgh30_24km_GRNL_c170103.nc'
+ ncdata		= '/glade/p/cesmdata/cseg/inputdata/atm/waccm/ic/FWT2000_f09_spinup01.cam.i.0001-01-02-00000_c160315.nc'
+ pertlim		=  1.0D-5 
+ use_topo_file		= .true.
+/
+&dyn_fv_inparm
+ fv_am_correction		=  .false.
+ fv_am_diag		=  .false.
+ fv_am_fix_lbl		=  .false.
+ fv_am_fixer		=  .false.
+ fv_del2coef		= 3.e+5
+ fv_div24del2flag		= 4
+ fv_fft_flt		= 1
+ fv_filtcw		= 0
+ fv_nsplit		= 16
+ fv_nspltrac		= 4
+ fv_nspltvrm		= 2
+/
+&phys_ctl_nl
+ cam_chempkg		= 'none'
+ cam_physpkg		= 'held_suarez'
+ cam_snapshot_after_num		=    -1 
+ cam_snapshot_before_num		=   -1 
+ deep_scheme		= 'NONE'
+ do_clubb_sgs		=  .false. 
+ eddy_scheme		= 'NONE'
+ history_aero_optics		=           .false.  
+ history_aerosol		=               .false.  
+ history_amwg		=                  .true.   
+ history_budget		=                .false.  
+ history_chemistry		=             .true.   
+ history_chemspecies_srf		=       .true.   
+ history_clubb		=                 .true.   
+ history_dust		=                  .false.  
+ history_eddy		=                  .false.  
+ history_vdiag		=                 .false.  
+ history_waccm		=                 .false.  
+ history_waccmx		=                .false.  
+ macrop_scheme		= 'none'
+ microp_scheme		= 'NONE'
+ radiation_scheme		= 'none'
+ shallow_scheme		= 'NONE'
+ srf_flux_avg		= 0
+ use_gw_convect_dp		= .false.
+ use_gw_front		= .false.
+ use_simple_phys		= .true.
+ use_subcol_microp		= .false.
+ waccmx_opt		= 'off'
+/
+&qneg_nl
+ print_qneg_warn		= 'summary'
+/
+&spmd_fv_inparm
+ npr_yz		= 60,30,30,60
+/
+&test_tracers_nl
+ test_tracer_num		= 5
+/
