@@ -1,0 +1,9 @@
+all simulations run with almost release CESM2.2 code (8/2/2020):
+
+ git clone https://github.com/ESCOMP/CAM.git
+ cd CAM
+ git checkout cam6_2_038
+
+Run scripts are in each sub-directory. These scripts were executed from the sub-directories.
+
+After run was finished, the first 6 months were deleted and remaining months averaged.
