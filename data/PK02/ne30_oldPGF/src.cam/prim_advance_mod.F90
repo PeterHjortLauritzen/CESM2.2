@@ -529,8 +529,6 @@ contains
       do ie=nets,nete
         call get_dp_ref(hvcoord%hyai, hvcoord%hybi, hvcoord%ps0,1,np,1,np,1,nlev,&
              elem(ie)%state%phis(:,:),dp3d_ref(:,:,:,ie),ps_ref(:,:,ie))
-!        ps_ref(:,:,ie) = 0.0_r8!xxx
-!        dp3d_ref(:,:,ie) = 0.0_r8!xxx
       end do
     endif
     !
@@ -548,7 +546,7 @@ contains
                               (hvcoord%hybi(k+1)-hvcoord%hybi(k))*ps_ref(:,:,ie))
         tmp                = hvcoord%hyam(k)*hvcoord%ps0+hvcoord%hybm(k)*ps_ref(:,:,ie)
         tmp2               = (tmp/hvcoord%ps0)**cappa
-!        T_ref(:,:,k,ie)    = 0.0_r8!xxx (T0+T1*tmp2)
+        T_ref(:,:,k,ie)    = (T0+T1*tmp2)
       end do
     end do
 

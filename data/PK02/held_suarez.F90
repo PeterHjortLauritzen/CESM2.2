@@ -64,7 +64,7 @@ module held_suarez
   integer, parameter :: eps=-10. !(epsilon parameter in A4 of PK)
   integer, parameter :: delz=10.
 !  real(r8), parameter :: efoldstrat = 0.5_r8
-  real(r8), parameter :: efoldstrat = 0.1_r8
+  real(r8), parameter :: efoldstrat = 0.125_r8
   real(r8), parameter :: kfstrat     = 1._r8/(86400._r8*efoldstrat)
 !  integer, parameter :: pret=0.5*100. ! lower limit (Pa) for upper level damping
   integer, parameter :: pret=1E-2*100. ! lower limit (Pa) for upper level damping
@@ -142,7 +142,7 @@ contains
 
     !PKSRAT
     logical  :: pkstrat=.true. !pkstrat=.True. to use the PK02 TEQ
-    real(r8) :: vgamma=4.0_r8  !gamma parameter in PK02 (controling vortex strength) 
+    real(r8) :: vgamma=3.0_r8  !gamma parameter in PK02 (controling vortex strength) 
     !END-PKSTRAT
 
     !

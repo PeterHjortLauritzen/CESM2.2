@@ -19,7 +19,7 @@ echo "setting up for Cheyenne"
 set homedir="/glade/u/home"
 set inputdir="/glade/p/cesmdata/cseg/inputdata/atm"
 set scratch="/glade/scratch"
-set queue="regular"
+set queue="premium"
 #
 # 637 SYPD with FHS94 ne30_ne30 using 2700 PEs; runs in 8min
 #  81 SYPD with FHS94 ne30pg3_ne30pg3 using  900 PEs
@@ -30,8 +30,7 @@ set machine="cheyenne"
 set compiler="intel"
 
 setenv pw `pwd`
-
-set caze=pk02_oldPGF_Tref0_psref0_${cset}_${src}_${res}_nlev${nlev}_${pecount}_NTHRDS${NTHRDS}_${steps}${stopoption}
+set caze=pk02_ne30_oldPGF_Tref0_psref0_${cset}_${src}_${res}_nlev${nlev}_${pecount}_NTHRDS${NTHRDS}_${steps}${stopoption}
 $homedir/$USER/src/$src/cime/scripts/create_newcase --case $scratch/$USER/$caze --compset $cset --res $res  --q $queue --walltime $walltime --pecount $pecount  --project $PBS_ACCOUNT --compiler $compiler --machine $machine --run-unsupported
 
 cd $scratch/$USER/$caze
@@ -40,6 +39,8 @@ cd $scratch/$USER/$caze
 ./xmlchange CAM_CONFIG_OPTS="-analytic_ic -phys held_suarez -nlev "$nlev" -nadv_tt=5" #very important: otherwise you get PS=1000hPa initial condition
 ./xmlchange NTHRDS=$NTHRDS
 ./xmlquery CASEROOT
+./xmlchange REST_N=6
+./xmlchange REST_OPTION=nmonths
 ./case.setup
 
 echo "use_topo_file      =  .true.   ">>user_nl_cam

@@ -40,6 +40,8 @@ cd $scratch/$USER/$caze
 ./xmlchange CAM_CONFIG_OPTS="-analytic_ic -phys held_suarez -nlev "$nlev" -nadv_tt=5" #very important: otherwise you get PS=1000hPa initial condition
 ./xmlchange NTHRDS=$NTHRDS
 ./xmlquery CASEROOT
+./xmlchange REST_N=6
+./xmlchange REST_OPTION=nmonths
 ./case.setup
 
 echo "use_topo_file      =  .true.   ">>user_nl_cam

@@ -7,3 +7,14 @@ all simulations run with almost release CESM2.2 code (8/2/2020):
 Run scripts are in each sub-directory. These scripts were executed from the sub-directories.
 
 After run was finished, the first 6 months were deleted and remaining months averaged.
+
+
+
+
+
+
+
+status:
+
+ne30pg3 needs continue run
+pk02_oldPGF_FHS94_CAM_ne30_ne30_mg17_nlev70_1800_NTHRDS1_1800ndays/run - failed
