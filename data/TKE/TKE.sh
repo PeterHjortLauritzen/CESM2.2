@@ -39,5 +39,10 @@ if ($res == "ne30_ne30_mg17") then
   echo "se_statefreq       = 244"                          >> user_nl_cam
   echo "interpolate_output = .true.,.true.,.false.,.false.">> user_nl_cam
 endif
+if ($res == "ne30pg3_ne30pg3_mg17") then
+  echo "se_statefreq       = 244"                          >> user_nl_cam
+  echo "interpolate_output = .true.,.true.,.false.,.false.">> user_nl_cam
+endif
+
 qcmd -- ./case.build
 ./case.submit

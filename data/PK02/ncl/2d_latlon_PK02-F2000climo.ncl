@@ -3,10 +3,11 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 
 begin
 ;  vname = "Tgll_dbg"
+;  vname = (/"OMEGA500","OMEGA500","OMEGA500","OMEGA500","OMEGA500"/)
   fnames =  lsArg ;systemfunc("ls "+lsArg)
   output_format = "pdf"
 
-  wks = gsn_open_wks(output_format,"2d_"+vname)
+  wks = gsn_open_wks(output_format,"2d")
   fall = addfiles(fnames,"r")       ; Open netCDF files.	
   fcnt = dimsizes(fnames)
   print(fnames)
@@ -31,8 +32,9 @@ begin
 ;  gsn_define_colormap(wks,"NCV_blue_red");NCV_jaisnd
 ;  gsn_define_colormap(wks,"NCV_banded");
 ;  gsn_define_colormap(wks,"BlAqGrWh2YeOrReVi22");
-  gsn_define_colormap(wks,"MPL_seismic");
-
+;  gsn_define_colormap(wks,"MPL_seismic");
+  plot = new(fcnt,graphic) 
+do k=0,3
   res                     = True         ; plot modifications desired
   res@gsnMaximize         = True         ; Maximize size of plot in frame
   res@gsnSpreadColors     = True         ; Use full colormap, but start
@@ -44,7 +46,7 @@ begin
   res@cnLinesOn           = False        ; Turn off contour lines
   res@cnLineLabelsOn      = False        ; Turn off contour line labels
   res@lbLabelAutoStride   = True         ; Clean up labelbar labels.
-  res@lbLabelBarOn = False
+  res@lbLabelBarOn = True
 ;  res@mpOutlineOn     = False       ; No continents
 ;  res@cnFillMode="RasterFill"
 
@@ -56,43 +58,149 @@ begin
 ; res@mpMinLonF = -40.                    ; set the minimum latitude = -70.
 ;  res@mpMaxLonF = 40.
 
-  plot = new(fcnt,graphic) 
-  do k=0,fcnt-1
-    print("plot "+k)
-;    lat1d = fall[k]->lat          ; Pull off lat/lon variable and
-;    lon1d = fall[k]->lon          ; convert both to 1D.
 
-    var  = fall[k]->$vname$(0,:,:)    ; Read some data; convert to 1D.i
-    plotvar  = fall[k]->$vname$(0,:,:)    ; Read some data; convert to 1D.i
-    if (k.eq.0) then
-      ref = 0.0;var
-      plotvar = var
-    else
-      plotvar = var-ref
-    end if
+;  gsn_define_colormap(wks,"MPL_seismic");
 
-    res@tiMainString        = titles(k)
-
-    if (vname.eq."OMEGA500") then
-      res@cnLevelSelectionMode = "ManualLevels"
-      res@cnMinLevelValF  = -0.2
-      res@cnMaxLevelValF  = 0.2              
-      res@cnLevelSpacingF = 0.01              
-;      res@gsnRightString = "mm/day"
-    end if
+    res@cnFillPalette             = "MPL_seismic"
+;  gsn_define_colormap(wks,"WhiteBlueGreenYellowRed")
+    res@cnLevelSelectionMode = "ManualLevels"
+    res@cnMinLevelValF  = -0.2
+    res@cnMaxLevelValF  = 0.2              
+    res@cnLevelSpacingF = 0.01              
     res@mpCenterLonF = 180.0           ; Rotate the projection.
 
-;      res@cnLevelSelectionMode = "ManualLevels"
-;      res@cnMinLevelValF  = -20.0
-;      res@cnMaxLevelValF  = 120.0               
-;      res@cnLevelSpacingF = 10.0              
 
+;  res@cnFillPalette  = "MPL_seismic"
 
+    res@tiMainString        = titles(k)
+    plotvar  = fall[k]->$vname(k)$(0,:,:)    ; Read some data; convert to 1D.i
     plot(k) = gsn_csm_contour_map_ce(wks,plotvar,res)
-    delete(var)
     delete(plotvar)
+    delete(res)
   end do
+;  delete(res@cnFillPalette)
+;  res@cnFillPalette  = "precip2_17lev"
+;  gsn_define_colormap(wks,"precip2_17lev");
+  res = True
+  res@cnLevelSelectionMode = "ExplicitLevels"   ; set explicit contour levels
+  res@cnLevels    = (/0.2,0.5,1.0,2,3,4,5,6,7,8,9,10,12,14,17/)
 
+  do k=4,5
+    res@tiMainString        = titles(k)
+    var   = fall[k]->PRECC(0,:,:)    ; Read some data; convert to 1D.i
+    var2  = fall[k]->PRECL(0,:,:)    ; Read some data; convert to 1D.i
+    var = var+var2
+    var = var*1000*24*3600 ;convert from m/s to mm/day
+    delete(var2)
+    plot(k) = gsn_csm_contour_map_ce(wks,var,res)
+    delete(var)
+  end do
+  delete(res@cnLevels)
+;  gsn_define_colormap(wks,"MPL_seismic");
+  k=6
+  res@tiMainString        = titles(k)
+  var   = fall[4]->PRECC(0,:,:)    ; Read some data; convert to 1D.i
+  var2  = fall[4]->PRECL(0,:,:)    ; Read some data; convert to 1D.i
+  var   = var+var2
+
+  var3 = fall[5]->PRECC(0,:,:)    ; Read some data; convert to 1D.i
+  var4 = fall[5]->PRECL(0,:,:)    ; Read some data; convert to 1D.i
+  var3 = var3+var4  
+  delete(var4)
+  var = var-var3
+  var = var*1000*24*3600 ;convert from m/s to mm/day
+  res@cnLevelSelectionMode = "ExplicitLevels"   ; set explicit contour levels
+  res@cnLevels    = (/-3,-2.75,-2.5,-2.25,-2,-1,1,2,2.25,2.5,2.75,3/)
+;  res@cnLevelSelectionMode = "AutomaticLevels"
+  plot(k) = gsn_csm_contour_map_ce(wks,var,res)
+  delete(var)
+
+  k=7
+  res@tiMainString        = titles(k)
+  var  = fall[2]->$vname(k)$(0,:,:)    ; Read some data; convert to 1D.i
+  var2 = fall[3]->$vname(k)$(0,:,:)    ; Read some data; convert to 1D.i
+  var  = var-var2
+  delete(var2)
+  res@cnLevelSelectionMode = "ManualLevels"
+  res@cnMinLevelValF  = -0.2
+  res@cnMaxLevelValF  = 0.2              
+  res@cnLevelSpacingF = 0.01              
+;  res@cnLevelSelectionMode = "AutomaticLevels"
+  plot(k) = gsn_csm_contour_map_ce(wks,var,res)
+
+
+;  do k=0,fcnt-1
+;    print("plot "+k)
+;;    lat1d = fall[k]->lat          ; Pull off lat/lon variable and
+;;    lon1d = fall[k]->lon          ; convert both to 1D.
+;
+;    if (vname(k).eq."PRECT") then
+;      var  = fall[k]->PRECC(0,:,:)    ; Read some data; convert to 1D.i
+;      plotvar  = fall[k]->PRECC(0,:,:)    ; Read some data; convert to 1D.i      
+;      var2  = fall[k]->PRECL(0,:,:)    ; Read some data; convert to 1D.i
+;      var = var+var2
+;      delete(var2)
+;      if (k.eq.5) then
+;        ref_ne30pg3 = fall[k]->PRECC(0,:,:)
+;        ref_ne30pg3 = var 
+;      end if
+;      if (k.eq.5) then
+;        ref_ne30pg3 = fall[k]->PRECC(0,:,:)
+;        ref_ne30pg3 = var 
+;      end if
+;
+;      if (k.eq.6) then
+;        var = var-ref_ne30pg3
+;      end if
+;    else
+;      if (k.eq.5) then
+;        ref_ne30pg3 = fall[k]->PRECC(0,:,:)
+;        ref_ne30pg3 = var 
+;      end if
+;      var  = fall[k]->$vname(k)$(0,:,:)    ; Read some data; convert to 1D.i
+;      plotvar  = fall[k]->$vname(k)$(0,:,:)    ; Read some data; convert to 1D.i
+;    end if
+;
+; 
+;       
+;    plotvar = var
+;
+;    res@tiMainString        = titles(k)
+;
+;    if (vname(k).eq."OMEGA500") then
+;      res@cnLevelSelectionMode = "ManualLevels"
+;      res@cnMinLevelValF  = -0.2
+;      res@cnMaxLevelValF  = 0.2              
+;      res@cnLevelSpacingF = 0.01              
+;;      res@gsnRightString = "mm/day"
+;    end if
+;
+;
+;    if (vname(k).eq."PRECT") then
+;      plotvar = 1000*24*3600*var ;convert from m/s to mm/day
+;      if (k.eq.6) then
+;;        res@cnLevelSelectionMode = "AutomaticLevels"
+;        res@cnLevelSelectionMode = "ExplicitLevels"   ; set explicit contour levels
+;        res@cnLevels    = (/-3,-2.75,-2.5,-2.25,-2,2,2.25,2.5,2.75,3/)
+;      else
+;        res@cnLevelSelectionMode = "ExplicitLevels"   ; set explicit contour levels
+;        res@cnLevels    = (/0.2,0.5,1.0,2,3,4,5,6,7,8,9,10,12,14,17/)
+;      end if 
+;    end if
+;
+
+;;      res@cnLevelSelectionMode = "ManualLevels"
+;;      res@cnMinLevelValF  = -20.0
+;;      res@cnMaxLevelValF  = 120.0               
+;;      res@cnLevelSpacingF = 10.0              
+;
+;
+;    plot(k) = gsn_csm_contour_map_ce(wks,plotvar,res)
+;    delete(var)
+;    delete(plotvar)
+;    delete(res@cnLevels)
+;  end do
+;
 ;************************************************
 ; create panel
 ;************************************************
