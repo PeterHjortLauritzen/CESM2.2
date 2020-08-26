@@ -194,11 +194,83 @@
 
 \section{Numerical improvements to CAM-SE}
 [explain how analytic\_ic works with us\_stand\_atm; overwrite of tracers not water species]
+
 \subsection{Improving flow of topography}
+In dynamical core development a key ingredient (though little discussed in the literature) is the smoothing of topography and the strength of explicit damping. It is, in general, considered desirable to smooth the topography as little as possible so that the model elevations are closer to the real-world elevations. Similarly a model developer would like to reduce the artificial diffusion as much as possible to increase the effective resolution of the model. If the topography is too rough for the dynamical core solver to handle, the model will either go unstable or the solution will have excessive up- and down-drafts near steep terrain. This can, in the case of updrafts, lead to too much lifting of air and tracers, which can, in turn, trigger irreversible processes such as precipitation  \cite <see, e.g., Figure 7 in >[]{LetAl2015GMDD}. A way to reduce large vertical velocities is to increase divergence damping. Therefore model developers typically try to find a `sweet spot' between topographic roughness and least amount of artificial diffusion. An example of such a tuning process, where each iteration involved 30 year AMIP-like simulations, is documented in detail in \citeA{LetAl2015GMDD}{\footnote{note that the reference is to the discussion paper and not the final publication of \citeA{LetAl2015GMD} since one of the reviews asked to have the section on divergence damping and topography smoothing removed!}}. For this older version of the spectral-element dynamical core (pre CESM2) we ended up using smoother topography and more divergence damping than CAM-FV at comparable resolutions (see Figure zzz []). This is obviously not desirable wherefore significant algorithmic development has been performed to improve on this aspect of the SE dynamical core. The two algorithmic changes in CESM2.2-SE is the switch to an Exner-based pressure gradient force (PGF) formulation and reference profiles for viscosity operators. These changes are documented in two separate sub-Sections below.
+\subsubsection{Exner-based PGF (pressure gradient force)}
+The PGF force formulation used in CESM1 is a standard formulation used in many legacy global climate models
+\begin{equation}
+\label{eq:pgf1}
+ \nabla_{\eta^{(d)}} \Phi   + \frac{1}{\rho} \nabla_{\eta^{(d)}} p,
+\end{equation}
+where $\Phi$ is the geopotential height ($\Phi=g\, z$), $p$ pressure, $\rho$ density and $\eta^{(d)}$ is the dry-mass hybrid-sigma vertical coordinate. Significant improvement in the flow over topography can be achieved by using the Exner function 
+\begin{equation}
+\Pi \equiv \left( \frac{p}{p_0}\right)^{\frac{R^{(d)}}{c^{({d})}_p}},
+\end{equation}
+where $p_0=1000hPa$, $R^{(d)}$ is the gas constant for dry air and $c_p^{(d)}$ the heat capacity at constant pressure for dry air. The resulting PGF formula is 
+\begin{equation}\label{eq:pgf2}
+    \nabla_{\eta^{(d)}}\Phi+c_p^{(d)}\theta_v\nabla_{\eta^{(d)}}\Pi.
+\end{equation}
+where virtual potential temperature is
+\begin{equation}
+\theta_v\equiv \frac{T_v}{\Pi}
+\end{equation}
+and virtual temperature is given in equation (16) in \citeA{LetAl2018JAMES}. The derivation showing that (\ref{eq:pgf1}) and (\ref{eq:pgf2}) are equivalent is shown here:
+\begin{eqnarray*}
+c_p^{(d)}\theta_v\nabla_{\eta^{(d)}}\Pi &=& c_p^{(d)}\theta_v\nabla_{\eta^{(d)}}\left( \frac{p}{p_0}\right)^{\kappa},\\
+&=& c_p^{(d)}\theta_v\kappa\left( \frac{p}{p_0}\right)^{\kappa-1} \nabla_{\eta^{(d)}}\left( \frac{p}{p_0}\right),\\
+&=& c_p^{(d)}\theta_v\kappa\Pi\left( \frac{p_0}{p}\right) \nabla_{\eta^{(d)}}\left(\frac{p}{p_0}\right),\\
+&=& \frac{c_p^{(d)}\theta_v\kappa\Pi}{p} \nabla_{\eta^{(d)}}p,\\
+&=& \frac{R_d\theta_v\Pi}{p} \nabla_{\eta^{(d)}}p,\\
+&=& \frac{R_dT_v}{p} \nabla_{\eta^{(d)}}p,\\
+&=& \frac{1}{\rho} \nabla_{\eta^{(d)}}p.
+\end{eqnarray*}
+The Exner-based PGF formulation is used in a number of state-of-the-art models \cite <e.g.> {joyOfUM}.
 \subsubsection{Reference profiles for viscosity}
+Horizontal diffusion in terrain following coordinates is most conveniently performed on model levels, i.e. along $\eta^{(d)}$ coordinate surface in SE. When applied to temperature $T$, for example, there is a tendency to warm the atmosphere at higher ground where the coordinate surfaces slope steeply. This problem may be alleviated by applying diffusion operators to a variable the varies more uniformly with height. An approach, proposed by \citeA{SJ1991QJRMS}, is to subtract a static reference profile from temperature before applying the hyperviscosity operator
+\begin{equation}
+\nabla^4_{\eta^{(d)}}\left( T-T^{ref}\right),
+\end{equation}
+where
+\begin{equation}
+T^{ref}=
+\end{equation}
+
+
+In areas of steep terrain diffusion operators can tend to smooth
+
+
 \subsubsection{Tuning of viscosity coefficients}
+Our main goals during this tuning process was:
+\begin{itemize}
+\item use the same level of smoothing of topography as in CAM-FV
+\item to reduce obvious noise in $\omega$ near steep terrain while not increasing explicit damping coefficients excessively
+\item make sure model was stable in full physics configurations; the WACCM model is the most difficult to keep stable so a stable WACCM simulation capability was part of the testing
+\end{itemize}
+
+, to produce physical solutions for flow over steep topography. At the very least a physical solution is defined as a solution which is clearly {\em{not noisy}}. 
+
+Unfortunately there does not seem to be a simplified standardized test case for such a tuning process wherefore we have developed our own.
 [Held-Suarez topo]
+
+
+[plot cross section of $T$; is their uphill warming without reference temperature?]
+[see Mark's PPT; Download/hstopo.pptx]
+\begin{itemize}
+\item Switching to Exner pressure and prognostic potential temperature substantially reduces pressure gradient errors  (Thuburn, QJRMS, 2006; Toy \& Randall, JCP 2007)
+\item Adjusting hyperviscosity to not dissipate hydrostatic background state further improves results near the surface
+\end{itemize}
+
+
 \subsection{Sponge layer damping for middle atmosphere models}
+[The purpose of a numerical sponge is to damp vertical propagating from There are many choices in sponge layer damping. They can be divided into what the damping operator is (implicit or explicit) and what the vertical profile of the damping should be. In CAM-SE the sponge layer damping is explicit; Laplacian damping of the prognostic variables. Using that approach the vertical profile of the damping must be chosen. 
+
+Reference ECWMF report
+
+Why molecular and thermal? Vertical profile only depends on one parameter (strength) and not others as the TANH profile
+
+Where in the atmosphere sponge is matters too? The higher the top the more the vertical waves will have grown in amplitude and the stronger the sponge layers needs to be!]
+
 \subsubsection{Traditional sponge layer formulation}
 \subsubsection{Molecular viscosity}
 The 2D equation for molecular viscosity is
